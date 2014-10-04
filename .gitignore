@@ -20,3 +20,10 @@ doc/
 .secret
 bundler_stubs/
 .settings/
+
+#sass
+**/.sass-cache/*
+
+#Jekyll
+_site
+**/_site/*

@@ -1,0 +1,12 @@
+# Site settings
+title: j.steve.martinez
+email: stevemart@comcast.net
+description: > # this means to ignore newlines until "baseurl:"
+  This blog is intended to lean how to use the features in Jekyll.
+baseurl: "" # the subpath of your site, e.g. /blog/
+url: "https://j-steve-martinez.github.com" # the base hostname & protocol for your site
+twitter_username: j_steve_m
+github_username:  j-steve-martinez
+
+# Build settings
+markdown: kramdown
