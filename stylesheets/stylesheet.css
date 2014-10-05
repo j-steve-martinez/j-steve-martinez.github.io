@@ -89,6 +89,15 @@ header h2 {
   letter-spacing: 0;
 }
 
+.steve {
+  font-size: 26px;
+  color: #fff;
+  font-weight: normal;
+  line-height: 1.3;
+  width: 540px;
+  letter-spacing: 0;
+}
+
 .inner {
   position: relative;
   width: 940px;
