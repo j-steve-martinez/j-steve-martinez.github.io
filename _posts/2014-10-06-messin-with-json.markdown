@@ -49,7 +49,7 @@ I updated the script above to rename myTutorial.txt to json.txt and added the da
 ]
 {% endhighlight %}
 
-Using the Jekyll templates, I just put the snippet below at the top of the json.html page:
+Using the Jekyll [YAML][yaml] templates, I just put the snippet below at the top of the json.html page:
 
 {% highlight ruby %}
 ---
@@ -62,7 +62,7 @@ Then added the json script from above. And `pow`!
 
 You get a nicly formatted page with some scripting embedded as you can see [here][example].
 
-
+[yaml]:      http://yaml.org/
 [example]:	{{ "/examples/json/json.html" | prepend: site.baseurl }}
 [w3]:				http://www.w3schools.com/json/json_http.asp
 [json]:			http://json.org
