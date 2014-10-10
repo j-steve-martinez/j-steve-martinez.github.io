@@ -1,22 +1,13 @@
-# Site settings
-name: J. Steve Martinez
-title: Steve's World
-tag: Doing some Stuff
-email: stevemart@comcast.net
+#title: Doing Stuff
+#page_name: Welcome 
+username: J. Steve Martinez
 description: Learning Jekyll
+blog_name: Bloggy the Blog
+email: stevemart@comcast.net
 baseurl: "" # the subpath of your site, e.g. /blog/
-url: "https://j-steve-martinez.github.com" # the base hostname & protocol for your site
+#url: "https://j-steve-martinez.github.com" # the base hostname & protocol for your site
 twitter_username: j_steve_m
 github_username:  j-steve-martinez
 
-
-defaults:
-  -
-    scope:
-      path: "" # an empty string here means all files in the project
-      type: "posts" # previously `post` in Jekyll 2.2.
-    values:
-      layout: "default"
-
 # Build settings
-markdown: kramdown
+markdown: redcarpet

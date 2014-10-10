@@ -1,20 +1,38 @@
 <!DOCTYPE html>
 <html>
-
-  {% include head.html %}
-
+{% include head.html %}
   <body>
-
     {% include header.html %}
 
-    <div class="page-content">
-      <div class="wrapper">
-        {{ content }}
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          
+          {{ content }}
+
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://twitter.com/j_steve_m" class="button" data-show-count="false">
+           Follow<small>On Twitter</small></a>
+          <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+          <a href="mailto:{{ site.email }}" class="button">
+            Mail<small>ME</small>
+          </a>
+          <a href="https://github.com/j-steve-martinez/j-steve-martinez.github.io/archive/master.zip" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/j-steve-martinez/j-steve-martinez.github.io/archive/master.tar.gz" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+         <p>Theme inspired by San Francisco Giants epic 18 inning win over the Washington D.C. Nationals on October 4, 2014.</p>
+          Giants     2<br />
+          Nationals  1
+        </aside>
       </div>
     </div>
 
-    {% include footer.html %}
-
   </body>
-
 </html>
