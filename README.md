@@ -1,7 +1,3 @@
----
-layout: page
----
-
 <h1>Jekyll Teams</h1>
 A simple update on the Jekyll new theme adding Bay Area team colors and images.
 
@@ -43,6 +39,6 @@ Like this:
 </pre>
 
 Just name the image file team-name.png replacing team-name with your team and you should get a button.
-<h3>Give it a <a href="/teams">try</a></h3>
+<h3>Give it a <a href="https://j-steve-martinez.github.io/teams/">try</a></h3>
 
 <h2>Have Fun!</h2>
