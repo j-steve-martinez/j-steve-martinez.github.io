@@ -202,3 +202,16 @@ pre {
         }
     }
 }
+
+/**
+ * Team Buttons
+ */
+button.icon {
+  img {
+    display: inline-block;
+  }
+  width: 75px;
+  height: 75px;
+  vertical-align: middle;
+}
+

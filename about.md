@@ -4,8 +4,10 @@ title: About
 permalink: /about/
 ---
 
-Just trying to foobar my way through the web using [jekyll](https://github.com/jekyll/jekyll).
+This is the base Jekyll theme. It has been updated to include include Bay Area team colors as an option using the Team link in the header.
 
+You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](http://jekyllrb.com/)
 
-[The GitHub Stuff](https://github.com/j-steve-martinez)
+You can find the source code for the Jekyll new theme at: [github.com/jglovier/jekyll-new](https://github.com/jglovier/jekyll-new)
 
+You can find the source code for Jekyll at [github.com/jekyll/jekyll](https://github.com/jekyll/jekyll)
