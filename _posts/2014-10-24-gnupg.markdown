@@ -1,0 +1,69 @@
+---
+layout: post
+title:  Using GnuPg (PGP) with GitHub
+date:   2014-10-24 12:10:57
+categories: notes security
+---
+
+I finally got tired of typing in my username and password when I pushed my changes to GitHub.
+
+So I Google `git credentials` and after viewing several web sites including [Stack Overflow][stackoverflow] and a great write up on [Ian Atkinson][ianatkinson] blog, I ended up doing the following.
+
+I Created a key but didn't trust it so when I went to use it, Ubuntu popped up a dialog to trust it when I was logged in.  I have included the command line trust options for reference:
+
+    gpg --gen-key
+
+List the key:
+
+    gpg --list-keys
+    gpg --list-secret-keys
+
+Again on Ubuntu when you use the key you get prompted for trust authentication.
+
+To trust the key:
+
+{% highlight sh %}
+    echo -n PASSPHRASE > phrase
+    chmod 400 phrase #Make sure ONLY the user running the cron job can read the phrase
+    yes | gpg --passphrase-fd 3 --recipient USER --encrypt FILENAME.txt 3<phrase
+{% endhighlight %}
+
+You need the `git-credentials-netrc` in your path with execute permissions.  It is installed with git at:
+
+    /usr/share/doc/git/contrib/credential/netrc/git-credential-netrc
+
+If you don't have it on your system you can get it as such:
+
+    curl -o git-credential-netrc 
+https://raw.githubusercontent.com/git/git/master/contrib/credential/netrc/git-credential-netrc
+
+Make a text file named `.netrc` in a subdir of your home folder with the following contents and save:
+
+    machine github.corp.com
+    login github-username
+    password github-password
+    protocol https
+
+Encrypt the file:
+
+    gpg --list-keys
+
+    gpg -e -r email-of-above-command .netrc
+
+
+Make sure you end up with `.netrc.gpg` then delete the `.netrc` file.
+
+To use the file with git, change to your project directory containing the .git folder then run:
+
+    git config --local credential.helper "netrc -f /path/to/.netrc.gpg -v"
+
+You should now be able to push to GitHub without getting promped for your usename and password.
+
+This post is proof it worked!
+
+{% highlight ruby %}
+Automation = Lazy("Steve")
+{% endhighlight %}
+
+[stackoverflow]: http://stackoverflow.com/a/18362082/6309
+[ianatkinson]: http://www.ianatkinson.net/computing/gnupg.htm

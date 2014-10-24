@@ -1,2 +1,32 @@
-_site
-.sass-cache
+# Ignore bundler config.
+/.bundle
+
+# Ignore the default SQLite database.
+/db/*.sqlite3
+/db/*.sqlite3-journal
+
+# Ignore all logfiles and tempfiles.
+/log
+/log/*.log
+/tmp
+
+# Ignore other unneeded files.
+database.yml
+doc/
+*.swp
+*~
+.project
+.DS_Store
+.idea
+.secret
+bundler_stubs/
+.settings/
+config/secrets.yml
+cacert.pem
+
+#sass
+**/.sass-cache/*
+
+#Jekyll
+_site/
+**/_site/*
