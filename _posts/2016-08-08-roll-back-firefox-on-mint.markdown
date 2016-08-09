@@ -6,7 +6,7 @@ categories: ubuntu, mint, apt
 ---
 # Note on rolling back a package in Ubuntu flavor Mint
 
-After updating to Firefox to version 48 on Mint I was a bit shocked to find that the search amonge other things was completely broken.
+After updating Firefox to version 48 on Mint I was a bit shocked to find that the search amonge other things was completely broken.
 No right click for copy or open a link in a new tab.  So I had to roll Firefox back.
 
 This is just a note on how to roll back a package quickly:
