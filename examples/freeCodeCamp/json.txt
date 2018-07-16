@@ -1,5 +1,9 @@
 [
 {"display": "freeCodeCamp","url": "http://www.freecodecamp.com/map"},
-{"display": "fcc Project on CodePen","url": "http://codepen.io/j_steve_m/"},
-{"display": "Python simpleJSON","url": "https://pypi.python.org/pypi/simplejson/"}
+{"display": "fcc Projects on CodePen","url": "http://codepen.io/j_steve_m/"},
+{"display": "fcc Vote Machine","url": "https://github.com/j-steve-martinez/vote-machine"},
+{"display": "fcc Pub Crawler","url": "https://github.com/j-steve-martinez/a-pub-crawler"},
+{"display": "fcc Booklender","url": "https://github.com/j-steve-martinez/booklender"},
+{"display": "fcc Eye See","url": "https://github.com/j-steve-martinez/eye-see"},
+{"display": "fcc Stock Watching","url": "https://github.com/j-steve-martinez/stock-watching"}
 ]
