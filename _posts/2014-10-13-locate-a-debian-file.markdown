@@ -2,7 +2,7 @@
 layout: post
 title:  Locate A Debian File
 date:   2014-10-13 14:25:25
-categories: notes debian
+categories: notes
 ---
 Sometimes you want to know where a file should be located.  You can just search the apt-file system for the location to where a file is installed.
 

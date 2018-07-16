@@ -1,0 +1,5 @@
+[
+{"display": "freeCodeCamp","url": "http://www.freecodecamp.com/map"},
+{"display": "fcc Project on CodePen","url": "http://codepen.io/j_steve_m/"},
+{"display": "Python simpleJSON","url": "https://pypi.python.org/pypi/simplejson/"}
+]

@@ -2,7 +2,7 @@
 layout: post
 title:  Messin with JSON
 date:   2014-10-06 11:44:48
-categories: scripting
+categories: notes
 ---
 
 Just thought I would implement a bit of javascript using [JSON (javascript object notation)][json].

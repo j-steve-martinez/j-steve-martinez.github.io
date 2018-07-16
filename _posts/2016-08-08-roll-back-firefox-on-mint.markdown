@@ -2,7 +2,7 @@
 layout: post
 title:  Roll Back Firefox on Mint
 date:   2016-08-08 19:14:27
-categories: ubuntu, mint, apt
+categories: notes
 ---
 # Note on rolling back a package in Ubuntu flavor Mint
 

@@ -30,3 +30,8 @@ cacert.pem
 #Jekyll
 _site/
 **/_site/*
+.jekyll-metadata
+
+#Third Party Javascript Libraries
+/javascript/bootstrap.min.js
+/javascript/jquery.min.js

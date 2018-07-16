@@ -2,7 +2,7 @@
 layout: post
 title:  Using GnuPg (PGP) with GitHub
 date:   2014-10-24 12:10:57
-categories: notes security
+categories: notes
 ---
 
 I finally got tired of typing in my username and password when I pushed my changes to GitHub.

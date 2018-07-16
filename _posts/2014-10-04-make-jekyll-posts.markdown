@@ -2,6 +2,7 @@
 layout: post
 title:  Make Jekyll Posts
 date:   2014-10-04 10:14:50
+categories: notes
 ---
 Hello,
 

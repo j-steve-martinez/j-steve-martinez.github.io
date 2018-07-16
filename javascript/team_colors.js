@@ -52,6 +52,8 @@ function appendStyle(team) {
   if ( team=="raiders")     {var styles = raiders_styles;}
   if ( team=="jekyll")      {var styles = jekyll_styles;}
 
+  console.log(team);
+
   if (css.styleSheet) css.styleSheet.cssText = styles;
   else css.appendChild(document.createTextNode(styles));
 
@@ -91,3 +93,13 @@ function applyTeam() {
     appendStyle(team);
   }
 }
+
+$(document).ready(function(){
+  // console.log('document ready says jquery');
+  applyTeam();
+  $(".icon").click(function(a){
+    console.log(a.currentTarget.id);
+    // applyTeam(a.currentTarget.id);
+    appendStyle(a.currentTarget.id)
+  });
+});
