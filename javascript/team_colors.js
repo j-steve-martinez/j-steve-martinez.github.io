@@ -52,16 +52,18 @@ function appendStyle(team) {
   if ( team=="raiders")     {var styles = raiders_styles;}
   if ( team=="jekyll")      {var styles = jekyll_styles;}
 
-  console.log(team);
+  // console.log(team);
 
   if (css.styleSheet) css.styleSheet.cssText = styles;
   else css.appendChild(document.createTextNode(styles));
 
-  document.getElementsByTagName("head")[0].appendChild(css);
-  document.getElementById("team_header").innerHTML = team;
-  document.getElementById("team_footer").innerHTML = team.toUpperCase();
-  document.getElementById("team-image").src = "/images/"+team+".png";
-  document.getElementById("team-image").alt = team.toUpperCase();
+  if (document.getElementsByTagName("head")){document.getElementsByTagName("head")[0].appendChild(css);} 
+  if (document.getElementById("team_header")){document.getElementById("team_header").innerHTML = team;}
+  if (document.getElementById("team_footer")){document.getElementById("team_footer").innerHTML = team.toUpperCase();}
+  if (document.getElementById("team-image")){
+    document.getElementById("team-image").src = "/images/"+team+".png";
+    document.getElementById("team-image").alt = team.toUpperCase();
+  }
   
   setCookie("teamname", team, 30);
 }
