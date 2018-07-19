@@ -5,66 +5,11 @@
  */
 
 function appendStyle(team) {
-  var css = document.createElement('style');
-  css.type = 'text/css';
-  
-  var niners_styles = '.site-header { background: #ac0000;}';
-  niners_styles += ' body { background: gold; }';
-  niners_styles += ' a.site-title { color: gold !important;}';
-  niners_styles += ' .page-link { color: gold !important;}';
-
-  var giants_styles = '.site-header { background: black;}';
-  giants_styles += ' body { background: #fffce3; }';
-  giants_styles += ' a.site-title { color: #fe5a1d !important;}';
-  giants_styles += ' .page-link { color: #fe5a1d !important;}';
-
-  var warriors_styles = '.site-header { background: #0120b9;  }';
-  warriors_styles += ' body { background: #efd812; }';
-  warriors_styles += ' a.site-title { color: #efd812 !important;}';
-  warriors_styles += ' .page-link { color: #efd812 !important;}';
-
-  var sharks_styles = '.site-header { background: #007889; }';
-  sharks_styles += ' body { background: #FFFFFF }';
-  sharks_styles += ' a.site-title { color: white !important;}';
-  sharks_styles += ' .page-link { color: white !important;}';
-
-  var athletics_styles = '.site-header { background: green;}';
-  athletics_styles += ' body { background: yellow; }';
-  athletics_styles += ' a.site-title { color: yellow !important;}';
-  athletics_styles += ' .page-link { color: yellow !important;}';
-
-  var raiders_styles = '.site-header { background: black;}';
-  raiders_styles += ' body { background: silver; }';
-  raiders_styles += ' a.site-title { color: silver !important;}';
-  raiders_styles += ' .page-link { color: silver !important;}';
-
-  var jekyll_styles = '.site-header { background: white;}';
-  jekyll_styles += ' body { background: white; }';
-  jekyll_styles += ' a.site-title { color: black !important;}';
-  jekyll_styles += ' .page-link { color: black !important;}';
-
-
-  if ( team=="warriors")    {var styles = warriors_styles;}
-  if ( team=="niners")      {var styles = niners_styles;}  
-  if ( team=="giants")      {var styles = giants_styles;} 
-  if ( team=="sharks")      {var styles = sharks_styles;}
-  if ( team=="athletics")   {var styles = athletics_styles;}
-  if ( team=="raiders")     {var styles = raiders_styles;}
-  if ( team=="jekyll")      {var styles = jekyll_styles;}
-
-  // console.log(team);
-
-  if (css.styleSheet) css.styleSheet.cssText = styles;
-  else css.appendChild(document.createTextNode(styles));
-
-  if (document.getElementsByTagName("head")){document.getElementsByTagName("head")[0].appendChild(css);} 
-  if (document.getElementById("team_header")){document.getElementById("team_header").innerHTML = team;}
-  if (document.getElementById("team_footer")){document.getElementById("team_footer").innerHTML = team.toUpperCase();}
   if (document.getElementById("team-image")){
     document.getElementById("team-image").src = "/images/"+team+".png";
     document.getElementById("team-image").alt = team.toUpperCase();
   }
-  
+  $("body").attr('class', team);
   setCookie("teamname", team, 30);
 }
 
@@ -100,7 +45,7 @@ $(document).ready(function(){
   // console.log('document ready says jquery');
   applyTeam();
   $(".icon").click(function(a){
-    console.log(a.currentTarget.id);
+    // console.log(a.currentTarget.id);
     // applyTeam(a.currentTarget.id);
     appendStyle(a.currentTarget.id)
   });

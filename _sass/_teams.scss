@@ -1,0 +1,55 @@
+// This defines the elements and colors
+//  for changing the site colors to team colors
+// Just set the <body> element to the desired class:
+//  niners, giants, warriors, sharks, athletics, raiders, jekyll
+// example: <body class="giants">
+
+// Our variables
+$niners-a: #ffd700;
+$niners-b: #ac0000;
+
+$giants-a: #fe5a1d;
+$giants-b: black;
+$giants-c: #fffce3;
+
+$warriors-a: gold;
+$warriors-b: #0120b9;
+
+$sharks-a: #FFFFFF;
+$sharks-b: #007889;;
+
+$athletics-a: yellow;
+$athletics-b: green;
+
+$raiders-a: silver;
+$raiders-b: black;
+
+$jekyll-a: white;
+$jekyll-b: black;
+
+// team(header color, header background-color, page background-color)
+@mixin team($c1, $c2, $c3) {
+    // Body background
+    background-color: $c3;
+    .site-header{
+        // Header Background
+        background-color: $c2;
+ 
+        // Header Text
+        .wrapper .site-title {
+            color: $c1;
+        }
+        .wrapper .site-nav .trigger .page-link {
+            color: $c1;
+        }
+    }
+  }
+
+.giants { @include team($giants_a, $giants-b, $giants-c) }
+.niners { @include team($niners_a, $niners-b, $niners-a) }
+.warriors { @include team($warriors_a, $warriors-b, $warriors-a) }
+.sharks { @include team($sharks_a, $sharks-b, $sharks-a) }
+.athletics { @include team($athletics_a, $athletics-b, $athletics-a) }
+.raiders { @include team($raiders_a, $raiders-b, $raiders-a) }
+.jekyll { @include team($jekyll_a, $jekyll-b, $jekyll-a) }
+
