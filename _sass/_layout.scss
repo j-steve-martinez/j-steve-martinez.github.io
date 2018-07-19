@@ -108,17 +108,24 @@
     }
 }
 
+/**
+ * Tic Tac Toe
+ */
+
+// 
+//  .container {
+//     height: 300px;
+// }
 
 
 /**
  * Site footer
  */
+
 .site-footer {
-    border-top: 1px solid $grey-color-light;
+    // border-top: 1px solid $grey-color-light;
     padding: $spacing-unit 0;
-    // position:fixed;
-    // bottom:0;
-    // left:0;
+    margin-top: 1px;
 }
 
 .footer-heading {
@@ -221,6 +228,16 @@ li.gmail { background-image:url("../images/gmail.png"); }
  */
 .page-content {
     padding: $spacing-unit 0;
+
+    // Sticky Footer
+    min-height: 60%;
+    /* equal to footer height */
+    // margin-bottom: -142px; 
+}
+// Sticky Footer
+.page-content:after {
+    content: "";
+    display: block;
 }
 
 .page-heading {
