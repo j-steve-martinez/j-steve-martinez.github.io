@@ -41,8 +41,6 @@
     }
 }
 
-
-
 .site-nav {
     float: right;
     line-height: 56px;
@@ -228,9 +226,10 @@ li.gmail { background-image:url("../images/gmail.png"); }
  */
 .page-content {
     padding: $spacing-unit 0;
-
+    // position: relative;
     // Sticky Footer
     min-height: 60%;
+
     /* equal to footer height */
     // margin-bottom: -142px; 
 }
