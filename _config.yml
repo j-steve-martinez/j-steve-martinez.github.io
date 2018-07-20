@@ -11,3 +11,7 @@ github_username:  j-steve-martinez
 
 # Build settings
 markdown: kramdown
+
+collections:
+ projects:
+  output: true
