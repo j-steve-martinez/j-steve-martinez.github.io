@@ -47,6 +47,7 @@ $(document).ready(function(){
   $(".icon").click(function(a){
     // console.log(a.currentTarget.id);
     // applyTeam(a.currentTarget.id);
+    $("button").blur();
     appendStyle(a.currentTarget.id)
   });
 });

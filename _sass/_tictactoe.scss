@@ -1,0 +1,78 @@
+.ask {
+    /* text color */
+    color: #ffffff;  
+    font-family: Helvetica, sans serif;
+    font-size: 30px;
+     /* top, right, bottom, left */
+    padding: 10px 20px 10px 20px;
+    border: solid #1f628d 1px;
+    border-radius: 12px;
+    /* underline, overline, line-through or blink */
+    text-decoration: none; 
+}
+/* fancy button */
+.ask {
+    /* linear-gradient */
+    background: #3cb0fd;  /* For browsers that don't support graidents */
+    background: -webkit-linear-gradient(top, #3498db, #2980b9); /* For Safari 5.1 to 6.0 */
+    background: -moz-linear-gradient(top, #3498db, #2980b9); /* For Firefox 3.6 to 15 */
+    background: -o-linear-gradient(top, #3498db, #2980b9); /* For Opera 11.1 to 12.0 */
+    background: linear-gradient(to bottom, #3498db, #2980b9); /* Standard syntax */
+  
+    /* box-shadow */
+    -webkit-box-shadow: 5px 5px 3px #666666;
+    -moz-box-shadow: 5px 5px 3px #666666;
+    box-shadow: 5px 5px 3px #666666; /* offset-x, offset-y, blur-radius, color */
+  }
+  
+  .ask:hover {
+    background: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+    background: -moz-linear-gradient(top, #3cb0fd, #3498db);
+    background: -o-linear-gradient(top, #3cb0fd, #3498db);
+    background: linear-gradient(to bottom, #3cb0fd, #3498db);
+  }
+  
+  /* eliminate shadow when clicked */
+  .ask:active {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+  }
+
+#board {
+    border-collapse: collapse;
+}
+.box {
+    border: 3px solid rgb(0, 0, 0);
+    text-align: center;
+    height: 75px;
+    width: 75px;
+}
+[id="1"] {
+    border-top: $background-color;
+    border-left: $background-color;
+}
+[id="2"] {
+    border-top: $background-color;
+}
+[id="3"] {
+    border-top: $background-color;
+    border-right: $background-color;
+}
+[id="4"] {
+    border-left: $background-color;
+}
+[id="6"] {
+    border-right: $background-color;
+}
+[id="7"] {
+    border-left: $background-color;
+    border-bottom: $background-color;
+}
+[id="8"] {
+    border-bottom: $background-color;
+}
+[id="9"] {
+    border-right: $background-color;
+    border-bottom: $background-color;
+}

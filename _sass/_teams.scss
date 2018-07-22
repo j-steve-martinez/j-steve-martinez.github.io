@@ -14,8 +14,8 @@ $giants-a: #fe5a1d;
 $giants-b: black;
 $giants-c: #fffce3;
 
-$warriors-a: gold;
-$warriors-b: #0120b9;
+$warriors-a: #ffce48;
+$warriors-b: #223c8d;
 
 $sharks-a: #FFFFFF;
 $sharks-b: #007889;;
@@ -57,3 +57,59 @@ $jekyll-b: black;
 .raiders { @include team($raiders_a, $raiders-b, $raiders-a) }
 .jekyll { @include team($jekyll_a, $jekyll-b, $jekyll-a) }
 
+/**
+ * Team Buttons
+ */
+@mixin icons($color, $bg) {
+    color: darken($color, 50);  
+    font-family: Helvetica, sans serif;
+    font-size: 30px;
+     /* top, right, bottom, left */
+    // padding: 10px 20px 10px 20px;
+    border: solid $bg 1px;
+    border-radius: 12px;
+    /* underline, overline, line-through or blink */
+    text-decoration: none;
+
+    /* linear-gradient */
+    background: $bg;  /* For browsers that don't support graidents */
+    background: -webkit-linear-gradient(top, $bg, lighten($bg,50)); /* For Safari 5.1 to 6.0 */
+    background: -moz-linear-gradient(top, lighten($bg,50), $bg); /* For Firefox 3.6 to 15 */
+    background: -o-linear-gradient(top, $bg, lighten($bg,50)); /* For Opera 11.1 to 12.0 */
+    background: linear-gradient(to bottom, $bg, lighten($bg,50)); /* Standard syntax */
+  
+    /* box-shadow */
+    -webkit-box-shadow: 5px 5px 3px #666666;
+    -moz-box-shadow: 5px 5px 3px #666666;
+    box-shadow: 5px 5px 3px #666666; /* offset-x, offset-y, blur-radius, color */
+    &:hover {
+        background: -webkit-linear-gradient(top,lighten($bg,50), $bg);
+        background: -moz-linear-gradient(top,lighten($bg,50), $bg);
+        background: -o-linear-gradient(top,lighten($bg,50), $bg);
+        background: linear-gradient(to bottom,lighten($bg,50), $bg);
+      }
+    &:active {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    border: none;
+    }
+}
+
+button.icon {
+    img {
+        display: inline-block;
+    }
+    width: 75px;
+    height: 75px;
+    vertical-align: middle;
+    outline: none;
+}
+
+#giants { @include icons($giants-b, $giants-a) }
+#warriors { @include icons($warriors-a, $warriors-b) }
+#sharks { @include icons($sharks-a, $sharks-b) }
+#niners { @include icons($niners-a, $niners-b) }
+#athletics { @include icons($athletics-a, $athletics-b) }
+#raiders { @include icons($raiders-a, $raiders-b) }
+#jekyll { @include icons($jekyll-a, darken($jekyll-a, 25)) }
