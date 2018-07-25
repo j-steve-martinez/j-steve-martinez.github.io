@@ -156,9 +156,9 @@
     };
 
     winner = function() {
-      $('#start').text('YOU');
-      $('#strict').text('WIN');
-      $('#reset').text('GAME');
+      $('#button-start').text('YOU');
+      $('#button-strict').text('WIN');
+      $('#button-reset').text('GAME');
     };
 
     animate = function(id) {
@@ -180,7 +180,7 @@
       if (myCount < 10) {
         myCount = "0" + myCount;
       }
-      $('#counter').text(myCount);
+      $('#output-counter').text(myCount);
     };
 
     showError = function(id) {
@@ -222,9 +222,9 @@
       if (isOn) {
         isStrict ? isStrict = false : isStrict = true;
         if (isStrict) {
-          $('#strict').css('color', 'yellow');
+          $('#button-strict').attr('class', 'simon-button-strict');
         } else {
-          $('#strict').css('color', 'red');
+          $('#button-strict').attr('class', 'simon-button-strict-on');
         }
       }
     };
@@ -236,29 +236,37 @@
       }
     };
 
+    // deprecated
     setBackgroundColor = function(type, id) {
       if (id !== undefined) {
-        $('#' + id).css('background-color', color[id][type]);
+        console.log($('#input-' + id))
+        $('#input-' + id).css('background-color', color[id][type]);
+
       }
+    };
+
+    var toggleBackground = (type, id) => {
+
     };
 
     animateLabels = function(type, id) {
       // console.log('set color');
       var arr = ['start', 'strict', 'reset'];
-      arr.forEach(function(item) {
-        looper(item);
-      });
+      // arr.forEach(function(item) {
+      //   looper(item);
+      // });
       function looper(id) {
         var len = id.length;
         var label = '';
-        var dom = $('#' + id);
+        var dom = $('#button-' + id);
         var count = 0;
         dom.text('');
 
         var timer = setInterval(function() {
           label += id.slice(count, count + 1);
-          // console.log(label);
-          dom.text(label.toUpperCase());
+          console.log(label);
+          // dom.text(label.toUpperCase());
+          dom.text(label);
           if (count === len) {
             clearInterval(timer);
           }
@@ -286,9 +294,10 @@
       isStarted = false;
       umoves = [];
       if (isOn) {
-        $('#start').css('color', 'red');
+        // $('#button-start').css('color', 'red');
+        $('#button-start').attr('class', 'simon-button-start-on');
       }
-      animateLabels();
+      // animateLabels();
       showCount();
     };
 
@@ -301,21 +310,23 @@
       isOn ? isOn = false : isOn = true;
       if (isOn) {
         // turn on
-        $('#power').css('border-right', '0px solid black');
-        $('#power').css('border-left', '25px solid black');
-        $('.label').css('color', 'red');
-        $('#counter').css('color', 'red');
+        // $('#button-power').css('border-right', '0px solid black');
+        // $('#button-power').css('border-left', '25px solid black');
+        // $('.label').css('color', 'red');
+        // $('#output-counter').css('color', 'red');
+        $("#output-counter").attr('class', 'simon-control-output');
         animate('1');
         setTimeout(animate, 500, '2');
         setTimeout(animate, 1000, '4');
         setTimeout(animate, 1500, '3');
-        setTimeout(animateLabels, 2000);
+        // setTimeout(animateLabels, 2000);
       } else {
         // turn off
-        $('#power').css('border-left', '0px solid black');
-        $('#power').css('border-right', '25px solid black');
-        $('.label').css('color', 'black');
-        $('#counter').css('color', 'black');
+        // $('#button-power').css('border-left', '0px solid black');
+        // $('#button-power').css('border-right', '25px solid black');
+        // $('.label').css('color', 'black');
+        // $('#output-counter').css('color', 'black');
+        $("#output-counter").attr('class', 'simon-control-output-off');
         resetGame();
       }
     };
@@ -347,7 +358,8 @@
     this.start = function(id) {
       if (isStarted === false && isOn === true) {
         // console.log('starting game');
-        $('#start').css('color', '#80ff80');
+        // $('#button-start').css('color', '#80ff80');
+        $('#button-start').attr('class', 'simon-button-start-on');
         setGameMoves();
         isStarted = true;
         playGame(gameCounter, 'start');
@@ -360,44 +372,47 @@
   $(document).ready(function() {
     'use strict';
 
-    var isChrome = !!window.chrome;
-    if (isChrome) {
-      $('body').css('font-family', 'sans-serif');
-      $('.label').css('font-size', '14px');
-      $('#power-label').css('font-size', '14px');
-      $('h1').css('margin-left', '55px');
-    }
+    // var isChrome = !!window.chrome;
+    // if (isChrome) {
+    //   $('body').css('font-family', 'sans-serif');
+    //   $('.label').css('font-size', '14px');
+    //   $('#power-label').css('font-size', '14px');
+    //   $('h1').css('margin-left', '55px');
+    // }
 
-    $('.label').css('color', 'black');
-    $('#counter').css('color', 'black');
+
+    // $('.label').css('color', 'black');
+    // $('#output-counter').css('color', 'black');
 
     var game = new Controller();
 
-    $('.quarter').on('mousedown', function(e) {
+    $('.simon-input').on('mousedown', function(e) {
+      // console.log(e.target.id.split('-')[1]);
       // console.log('mouse down');
-      game.mouse(e.type, e.target.id);
-      game.sound(e.target.id);
+      game.mouse(e.type, e.target.id.split('-')[1]);
+      game.sound(e.target.id.split('-')[1]);
     });
 
-    $('.quarter').on('mouseup', function(e) {
+    $('.simon-input').on('mouseup', function(e) {
       // console.log('mouse up');
-      game.mouse(e.type, e.target.id);
-      game.move(e.target.id);
+      // e.target.id
+      game.mouse(e.type, e.target.id.split('-')[1]);
+      game.move(e.target.id.split('-')[1]);
     });
 
-    $('#strict-c').click(function(e) {
+    $('#button-strict').click(function(e) {
       game.strict();
     });
 
-    $('#reset-c').click(function(e) {
+    $('#button-reset').click(function(e) {
       game.reset();
     });
 
-    $('#start-c').click(function(e) {
+    $('#button-start').click(function(e) {
       game.start(e.target.id);
     });
 
-    $('#power').click(function(e) {
+    $('#button-power').click(function(e) {
       game.power('on');
     });
   });
