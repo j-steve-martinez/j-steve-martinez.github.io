@@ -24,6 +24,8 @@ bundler_stubs/
 config/secrets.yml
 cacert.pem
 
+_projects/snippet.txt
+
 #sass
 **/.sass-cache/*
 
@@ -33,5 +35,5 @@ _site/
 .jekyll-metadata
 
 #Third Party Javascript Libraries
-/javascript/bootstrap.min.js
-/javascript/jquery.min.js
+/javascript/bootstrap*.js
+/javascript/jquery*.js

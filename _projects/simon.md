@@ -20,20 +20,4 @@ categories: freeCodeCamp
             <div id="output-counter" class="simon-control-output">00</div>
         </div>
     </div>
-    <div class="simon-input">inputs
-        <div id="input-1" class="simon-input"></div>
-        <div id="input-2" class="simon-input"></div>
-        <div id="input-3" class="simon-input"></div>
-        <div id="input-4" class="simon-input"></div>
-    </div>
-	<div id="wrapper">	
-		<a href="#" class="button">Button</a>
-		<a href="#" data-icon="♚" class="button orange shield glossy">King</a>
-		<a href="#" data-icon="♛" class="button pink serif round glass">Queen</a>
-		<a href="#" data-icon="♞" class="button blue skew">Horse</a>
-		<br />
-		<a href="#accessibility" role="button" tabindex="1" class="button green">Tab1</a>
-		<a href="#accessibility" role="button" tabindex="2" class="button green">Tab2</a>
-		<button disabled class="button green glossy">Disabled</button>
-	</div>
 </div>
