@@ -5,9 +5,11 @@ date:   2018-07-24 08:59:14
 script: /javascript/tic_tac_toe.js
 categories: freeCodeCamp
 ---
-<h3>Would you like to play a game?</h3>
-<div class="container">
-  <div class="jumbotron text-center">
+<div id="credits">
+Original work for freeCodeCamp can be found on <a href="https://codepen.io/j_steve_m/pen/grXroM" target="_blank">Code Pen</a>
+</div>
+<div class="">
+  <div class="">
     <table id="board">
       <tr>
         <td id="1" class="box"></td>
