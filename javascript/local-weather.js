@@ -50,16 +50,11 @@
     }
 
     function getLocation() {
-        // get ip address
-        $.getJSON('https://api.ipify.org?format=json', function (data) {
-            console.log(data);
-            // getWeather(data.zip);
-        });
         // console.log('getLocation start');
-        // $.getJSON('http://api.ipstack.com/check?access_key=da7d4b791cc474c2bda28dc23ca0a19a', function (data) {
-        //     console.log(data);
-        //     // getWeather(data.zip);
-        // });
+        $.getJSON('https://ipinfo.io/', function (data) {
+            // console.log(data);
+            getWeather(data.postal);
+        });
 
     }
 
