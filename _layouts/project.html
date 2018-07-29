@@ -4,7 +4,15 @@ layout: default
 <div class="project">
   <div class="project-header">
     <h1 class="project-title">{{ page.title }}</h1>
-    <p class="project-meta">{{ page.date | date: "%b %-d, %Y" }}{% if page.author %} • {{ page.author }}{% endif %}{% if page.meta %} • {{ page.meta }}{% endif %}</p>
+    <p class="project-meta">
+      {{ page.date | date: "%b %-d, %Y" }}
+      {% if page.author %} • {{ page.author }}{% endif %}
+      {% if page.meta %} • {{ page.meta }}{% endif %}
+    </p>
+    <p class="project-codepen">
+        Original work for freeCodeCamp can be found on
+        <a href={{page.codepen}}>CodePen</a>
+    </p>
   </div>
 </div>
 <script type="text/javascript" src= {{ page.script }} ></script>

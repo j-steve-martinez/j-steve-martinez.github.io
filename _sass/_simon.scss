@@ -1,7 +1,6 @@
 body {
   margin-top: 50px;
   margin-bottom: 5px;
-  /*font-family: "Comic Sans MS", cursive, sans-serif;*/
   font-family: Artifika;
 }
 
@@ -91,9 +90,7 @@ table {
   color: red;
   background-color: black;
   border-radius: 5px;
-  /*width: 55px;*/
   height: 25px;
-  /*text-align: left;*/
 }
 
 #heading {
@@ -123,13 +120,8 @@ table {
   background-color: #33ccff;
   box-shadow: 0 0 0 2px black;
   border-right: 25px solid black;
-  /*margin-left: 13px;*/
   width: 25px;
   height: 25px;
-}
-
-#power-label {
-  /*margin-left: 10px;*/
 }
 
 #counter {
@@ -142,7 +134,4 @@ table {
   text-align: center;
   vertical-align: middle;
   line-height: 50px;
-}
-#credits {
-  margin-bottom: 25px;
 }
