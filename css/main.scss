@@ -44,9 +44,10 @@ $on-laptop:        800px;
 // Import partials from `sass_dir` (defaults to `_sass`)
 @import
 "test",
-"simon",
 "base",
 "layout",
 "syntax-highlighting",
 "teams",
-"tictactoe";
+"simon",
+"tictactoe",
+"random-quotes";

@@ -1,0 +1,59 @@
+--- 
+layout: project 
+title: "Random Quotes" 
+date: 2018-07-29 
+script: /javascript/random-quotes.js
+codepen: https://codepen.io/j_steve_m/pen/KzdZgm
+categories: freeCodeCamp 
+---
+
+
+<body>
+    <div class="container text-center">
+
+        <div class="jumbotron">
+            <div class="row">
+                <div class="col-sm-12">
+                    <!-- <h1>Random Quote Generator</h1> -->
+                    <div id="error"></div>
+                    <button id="getQuote" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">
+                        Get Quote
+                    </button>
+                    <br />
+                    <h3>
+                        <div id="quote"></div>
+                    </h3>
+
+                    <h4>
+                        <div id="author"></div>
+                    </h4>
+                    <br />
+                    <div id="twitter1"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        window.twttr = (function (d, s, id) {
+            var js,
+                fjs = d.getElementsByTagName(s)[0],
+                t = window.twttr || {};
+            if (d.getElementById(id))
+                return t;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "https://platform.twitter.com/widgets.js";
+            fjs.parentNode.insertBefore(js, fjs);
+
+            t._e = [];
+            t.ready = function (f) {
+                t._e.push(f);
+            };
+
+            return t;
+        }(document, "script", "twitter-wjs"));
+    </script>
+</body>
+
