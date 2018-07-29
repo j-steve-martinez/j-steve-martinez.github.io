@@ -3,7 +3,7 @@ title: J. Steve Martinez
 short: Doing Stuff
 email: j.steve.martinez@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
- Powered by Jekyll
+ Javascript work created by J. Steve Martinez
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "https://j-steve-martinez.github.com" # the base hostname & protocol for your site
 twitter_username: j_steve_m
