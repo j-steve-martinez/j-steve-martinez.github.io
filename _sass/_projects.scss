@@ -1,3 +1,23 @@
+// ***************** Twitch Status *****************************
+#twitch-status {
+    img {
+        width: 25px;
+        margin-top: 25px;
+    }
+    .online div {
+        background-color: rgb(227, 250, 220);
+    }
+    .offline div {
+        background-color: rgb(248, 214, 214);;
+    }
+    .selected {
+        background-color: rgb(195, 236, 195)
+    }
+    .nav-tabs {
+        width: 100px;
+    }
+}
+
 // ***************** Random Quotes *****************************
 #quote {
     margin-top: 10px;
