@@ -1,0 +1,76 @@
+--- 
+layout: project 
+title: "Pomodoro Clock" 
+date: Mar 31, 2016 
+script: /javascript/pomodoro-clock.js
+codepen: https://codepen.io/j_steve_m/pen/EKwPav
+categories: freeCodeCamp 
+---
+<div id="pomodoro-clock">
+    <table>
+        <tr>
+            <td>
+                <div id="rest" class="btn btn-danger">
+                    Break
+                </div>
+            </td>
+            <td>
+                <div id="work" class="btn btn-success">
+                    Session
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="btn-group">
+                    <button id="bneg" type="button" class="btn btn-warning my-button">
+                        -
+                    </button>
+                    <button id="bnum" type="button" class="btn btn-danger">
+                        5
+                    </button>
+                    <button id="bpos" type="button" class="btn btn-warning my-button">
+                        +
+                    </button>
+                </div>
+            </td>
+            <td>
+                <div class="btn-group">
+                    <button id="wneg" type="button" class="btn btn-warning my-button">
+                        -
+                    </button>
+                    <button id="wnum" type="button" class="btn btn-success">
+                        1
+                    </button>
+                    <button id="wpos" type="button" class="btn btn-warning my-button">
+                        +
+                    </button>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <div id="panel" class="panel panel-info">
+                    <div class="panel-heading ">
+                        <h1 id="time"></h1>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <div class="btn-group">
+                    <button id="start" type="button" class="btn btn-success ">
+                        Start
+                    </button>
+                    <button id="stop" type="button" class="btn btn-danger">
+                        Stop
+                    </button>
+                    <button id="reset" type="button" class="btn btn-info ">
+                        Reset
+                    </button>
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>
