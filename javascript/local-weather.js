@@ -52,13 +52,28 @@
     function getLocation() {
         // console.log('getLocation start');
         $.getJSON('https://ipinfo.io/', function (data) {
-            // console.log(data);
+            console.log("success");
             getWeather(data.postal);
-        });
+        })
+          .done(function(data) {
+            console.log( "second success" );
+            console.log(data.responseText);
+          })
+          .fail(function(data) {
+            console.log( "error" );
+            console.log(data.responseText);
+            alert(data.responseText);
+          })
+          .always(function(data) {
+            console.log( "complete" );
+            console.log(data.responseText);
+          });
+        ;
 
     }
 
     function getWeather(zip) {
+        // console.log('getWeather start');
         var degree = String.fromCharCode(176);
         var percent = String.fromCharCode(37);
         var yahooQuery = 'select * from weather.forecast where woeid in (select woeid from geo.places(1) where text="' + zip + ' limit 1")';
