@@ -1,0 +1,31 @@
+// ***************** Random Quotes *****************************
+#quote {
+    margin-top: 10px;
+}
+
+// ***************** Calculator *****************************
+#calculator {
+    border-collapse: separate;
+    border-spacing: 20px 10px;
+    border: 3px;
+    border-radius: 1em;
+    border-bottom-style: outset;
+    border-right-style: outset;
+    float: left;
+    background-color: #e6e6e6;
+    #result {
+        text-align: right;
+        border: 1px;
+        border-style: inset;
+        background-color: white;
+    }
+    #clear {
+        width: 100px;
+    }
+    .btn {
+        width: 40px;
+    }
+    [id="0"] {
+        width: 100px;
+    }
+}
