@@ -19,7 +19,6 @@
         border-radius: 5px;
         box-shadow: 5px 5px 10px $shadow;
     }
-
     #markup {
         margin-left: 25px;
     }
@@ -106,5 +105,38 @@
     }
     [id="0"] {
         width: 100px;
+    }
+}
+
+// ***************** Recipe Box *****************************
+#recipe-box {
+    width: 50%;
+    background-color: #9cfc9c;
+    .container {
+        padding: 10px;
+    }
+    .item-link {
+        background-color: #a1e4fa;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+    .item-list {
+        background-color: #fab9b9;
+    }
+    .recipe-list {
+        background-color: #d7adff;
+        padding-bottom: 1px;
+    }
+    #instructions {
+        padding-left: 10px;
+    }
+    textarea {
+        // width: 234px;
+        width: 95%;
+        height: 125px;
+    }
+    input {
+        width: 90%
     }
 }

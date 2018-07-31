@@ -16,6 +16,14 @@ layout: default
   </div>
 </div>
 {{ content }}
-<script type="text/javascript" src= {{ page.script }} ></script>
+
+{% if page.type %}
+  {% assign script_type = page.type %}
+{% else %}
+  {% assign script_type = "text/javascript" %}
+{% endif %}
+
+<script type={{ script_type }} src= {{ page.script }} ></script>
+
 
 
