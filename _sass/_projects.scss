@@ -183,28 +183,33 @@ $color4: #ffefc0;
 $color5: #00ffff;
 $color6: #F00C05;
 $color7: #A40CEC;
-
 @mixin colors($color, $background) {
     color: $color;
     background-color: $background;
 }
+
 @mixin margin-auto {
     margin: 5px auto;
 }
+
 @mixin size {
     height: 10px;
     width: 10px;
 }
+
 @mixin container {
-  padding-top: 5px;
-  padding-bottom: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
+
 @mixin sizeH {
-  @include size;
+    @include size;
 }
+
 @mixin sizeV {
-  @include size;
+    @include size;
 }
+
 @mixin button-variant($color, $background, $border) {
     color: $color;
     background-color: $background;
@@ -230,21 +235,21 @@ $color7: #A40CEC;
     padding-bottom: 25px;
     border-radius: 3%;
     float: left;
-    table, td {
+    table,
+    td {
         @include margin-auto;
         border-collapse: collapse;
         padding: 0px;
-        
     }
-    td:focus{
+    td:focus {
         background-color: $color1;
-        outline:none;
+        outline: none;
     }
     button {
-      @include button-variant($color4, $color3, $color4);
+        @include button-variant($color4, $color3, $color4);
     }
     #button {
-      padding-bottom: 5px;
+        padding-bottom: 5px;
     }
     .h-wall {
         @include sizeH;
@@ -255,70 +260,106 @@ $color7: #A40CEC;
         background-color: $color3;
     }
     .size {
-      @include size;
+        @include size;
     }
-    .floor, .door {
-      @include size;
-      background-color: $color4;
+    .floor,
+    .door {
+        @include size;
+        background-color: $color4;
     }
     .empty {
         @include size;
         background-color: $color3;
     }
     .monster {
-      @include size;
-      background-color: $color6;
+        @include size;
+        background-color: $color6;
     }
     .heal {
-      @include size;
-      background-color: $color2;
+        @include size;
+        background-color: $color2;
     }
     .weapon {
-      @include size;
-      background-color: $color5;
+        @include size;
+        background-color: $color5;
     }
     .portal {
-      @include size;
-      background-color: $color7;
+        @include size;
+        background-color: $color7;
     }
     .mask {
-      @include size;
-      background-color: black;
+        @include size;
+        background-color: black;
     }
     .stats {
-      display: inline;
-      padding-right: 8px;
+        display: inline;
+        padding-right: 8px;
     }
     .player-container {
-      @include colors($color2, $color3);
-      @include container;
-      width: 550px;
+        @include colors($color2, $color3);
+        @include container;
+        width: 550px;
     }
     .monster-container {
-      @include colors($color4, $color3);
-      @include container;
+        @include colors($color4, $color3);
+        @include container;
     }
     .message-container {
-      @include container;
+        @include container;
     }
     .key-container {
         @include container;
         background-color: #161616;
     }
     .key-heal {
-      @include colors($color2, "");
+        @include colors($color2, "");
     }
     .key-weapon {
-      @include colors($color5, "");
+        @include colors($color5, "");
     }
     .key-player {
-      @include colors($color1, "");
+        @include colors($color1, "");
     }
     .key-monster {
-      @include colors($color6, "");
+        @include colors($color6, "");
     }
     .key-portal {
-      @include colors($color7, "");
+        @include colors($color7, "");
     }
 }
 
+// ***************** D3 Bar Chart *****************************
+.bar {
+  fill: #828285;
+}
+.bar:hover {
+    fill: rgb(246, 250, 15);
+}
+
+// #content {
+//     display: table;
+//     // width: 1000px;
+//     // @include margin-auto;
+//     text-align: center;
+//     padding-top: 5px;
+//     padding-right: 25px;
+//     padding-left: 25px;
+//     padding-bottom: 25px;
+//     border-right: inset;
+//     border-bottom: inset;
+//     border-color: $color2; // border-style: inset;
+//     // @include colors($color1, $color4);
+// }
+
+div.tooltip {
+    position: absolute;
+    text-align: left;
+    width: 135px;
+    height: 30px;
+    padding: 2px;
+    padding-left: 10px;
+    font: 12px sans-serif;
+    border: 0px;
+    border-radius: 8px;
+    pointer-events: none; // @include colors($color1, $color4);
+}
