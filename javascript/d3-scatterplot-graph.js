@@ -1,20 +1,14 @@
 'use strict';
 (function(){
 
-
   var margin = {top: 20, right: 10, bottom: 50, left: 20};
   var contentWidth = $("#d3-scatterplot-graph")[0].clientWidth;
-  // var contentWidth = document.getElementsByTagName("html").clientWidth;
-  // console.log(contentWidth);
-  // var width = 900 - margin.left - margin.right,
-  //     height = 500 - margin.top - margin.bottom,
-  //     msgBox = {'width' : 250, 'height' : 100};
   var width = contentWidth - margin.left - margin.right,
       height = contentWidth - margin.top - margin.bottom,
       msgBox = {'width' : 250, 'height' : 100};
   var yLabel = 'Ranking';
   var xLabel = 'Minutes Behind Fastest Time';
-console.log(width);
+
   var x = d3.scaleLinear()
           .range([0, width]);
 
