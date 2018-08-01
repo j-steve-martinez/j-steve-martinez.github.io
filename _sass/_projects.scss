@@ -336,21 +336,6 @@ $color7: #A40CEC;
     fill: rgb(246, 250, 15);
 }
 
-// #content {
-//     display: table;
-//     // width: 1000px;
-//     // @include margin-auto;
-//     text-align: center;
-//     padding-top: 5px;
-//     padding-right: 25px;
-//     padding-left: 25px;
-//     padding-bottom: 25px;
-//     border-right: inset;
-//     border-bottom: inset;
-//     border-color: $color2; // border-style: inset;
-//     // @include colors($color1, $color4);
-// }
-
 div.tooltip {
     position: absolute;
     text-align: left;
@@ -362,4 +347,19 @@ div.tooltip {
     border: 0px;
     border-radius: 8px;
     pointer-events: none; // @include colors($color1, $color4);
+}
+// ***************** D3 Scatterplot Graph *****************************
+#d3-scatterplot-graph {
+    .tooltip {
+        position: fixed;
+        text-align: left;
+        width: 135px;
+        height: 30px;
+        padding: 2px;
+        padding-left: 10px;
+        font: 12px sans-serif;
+        border: 0px;
+        border-radius: 8px;
+        pointer-events: none;
+    }
 }
