@@ -330,8 +330,9 @@ $color7: #A40CEC;
 
 // ***************** D3 Bar Chart *****************************
 .bar {
-  fill: #828285;
+    fill: #828285;
 }
+
 .bar:hover {
     fill: rgb(246, 250, 15);
 }
@@ -348,6 +349,7 @@ div.tooltip {
     border-radius: 8px;
     pointer-events: none; // @include colors($color1, $color4);
 }
+
 // ***************** D3 Scatterplot Graph *****************************
 #d3-scatterplot-graph {
     .tooltip {
@@ -361,5 +363,108 @@ div.tooltip {
         border: 0px;
         border-radius: 8px;
         pointer-events: none;
+    }
+}
+
+// ***************** D3 Heat Map *****************************
+#d3-heat-map {
+
+    $color1: rgba(35, 31, 32, 1);
+    $color2: rgba(242, 240, 241, 1);
+    $color3: rgba(252, 250, 250, 1);
+    $color4: rgba(200, 211, 213, 1);
+    $color5: rgba(164, 184, 196, 1);
+
+    $nutral: rgba(251, 210, 129, 1);
+
+    $cold1: rgba(227, 230, 109, 1);
+    $cold2: rgba(181, 222, 82, 1);
+    $cold3: rgba(25, 223, 140, 1);
+    $cold4: rgba(91, 133, 214, 1);
+    $cold5: rgba(111, 32, 212, 1);
+
+    $heat1: rgba(216, 164, 127, 1);
+    $heat2: rgba(239, 148, 83, 1);
+    $heat3: rgba(237, 114, 75, 1);
+    $heat4: rgba(236, 89, 17, 1);
+    $heat5: rgba(226, 47, 29, 1); 
+
+    .tooltip {
+        position: absolute;
+        text-align: center;
+        width: 25px;
+        height: 30px;
+        padding: 2px;
+        font: 12px sans-serif;
+        border: 2px solid $color1;
+        border-radius: 5px;
+        pointer-events: none;
+        background-color: $nutral;
+
+    }
+    .color0 {
+        fill: $cold5;
+    }
+    
+    .color1 {
+        fill: $cold4;
+    }
+    
+    .color2 {
+        fill: $cold3;
+    }
+    
+    .color3 {
+        fill: $cold2;
+    }
+    
+    .color4 {
+        fill: $cold1;
+    }
+    
+    .color5 {
+        fill: $nutral;
+    }
+    
+    .color6 {
+        fill: $heat1;
+    }
+    
+    .color7 {
+        fill: $heat2;
+    }
+    
+    .color8 {
+        fill: $heat3;
+    }
+    
+    .color9 {
+        fill: $heat4;
+    }
+    
+    .color10 {
+        fill: $heat5;
+    }
+    
+    .key text {
+        // fill: black;
+        padding-bottom: 1px;
+    }
+    .title3 {
+        @include margin-auto;
+        width: 600px;
+    }
+    
+    .heading,
+    .title1,
+    .title2,
+    .title3 {
+        text-align: center;
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+    
+    .cell:hover {
+        fill: $color3;
     }
 }
