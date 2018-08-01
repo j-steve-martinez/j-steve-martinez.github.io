@@ -150,6 +150,22 @@ pre {
 }
 
 
+/**
+ * Page content
+ */
+
+ .page-content {
+    padding: $spacing-unit 0; 
+    min-height: 60%;
+}
+
+// Sticky Footer
+.page-content:after {
+    content: "";
+    display: block;
+}
+
+
 
 /**
  * Wrapper
