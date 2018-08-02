@@ -16,6 +16,13 @@
           {% endif %}
         {% endfor %}
       </div>
+      <div class="trigger">
+          {% for project in site.projects %}
+            {% if project.title %}
+            <a id="{{ project.title }}" class="project-link" href="{{ project.url | prepend: site.baseurl }}">{{ project.title }}</a>
+            {% endif %}
+          {% endfor %}
+        </div>
     </nav>
     </div>
 </header>
