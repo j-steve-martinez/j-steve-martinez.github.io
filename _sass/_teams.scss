@@ -1,9 +1,10 @@
-// This defines the elements and colors
-//  for changing the site colors to team colors
-// Just set the <body> element to the desired class:
-//  niners, giants, warriors, sharks, athletics, raiders, jekyll
-// example: <body class="giants">
-// Our variables
+/**
+* This defines the elements and colors/  for changing the site colors to team colors
+* Just set the <body> element to the desired class:
+*   niners, giants, warriors, sharks, athletics, raiders, jekyll
+* example: <body class="giants">
+*/
+
 $niners-a: gold;
 $niners-b: darkred;
 $niners-c: #f5eec6;
@@ -23,9 +24,13 @@ $raiders-b: black;
 $raiders-c: silver;
 $jekyll-a: white;
 $jekyll-b: black;
-// team(header color, header background-color, page background-color)
-@mixin team($c1, $c2, $c3) {
-    color: $c2; // Body background
+
+/**
+ * team(header color, header background-color, page background-color)
+ */
+
+ @mixin team($c1, $c2, $c3) {
+    color: $c2;
     @if $c3==$c1 {
         background-color: lighten($c1, 35%);
     }
@@ -33,17 +38,23 @@ $jekyll-b: black;
         background-color: $c3;
     }
     .site-header {
-        // Header Background
-        background-color: $c2; // Header Text
+        background-color: $c2;
         .wrapper .site-title {
             color: $c1;
         }
-        .wrapper .site-nav .trigger .page-link {
-            color: $c1;
-            &:hover {
-                color: $c3;
+        .wrapper .site-nav .trigger {
+            .page-link {
+                color: $c1;
+                &:hover {
+                    color: $c3;
+                }
+            }
+            .dropdown .page-link{                
+                padding-top: 0px;
+                padding-right: 0px;
             }
         }
+
         .wrapper .site-nav {
             color: $c1;
             background-color: $c2;
@@ -55,7 +66,24 @@ $jekyll-b: black;
         .site-nav .trigger .dropdown .dropdown-content {
             border: solid 1px $c3;
         }
-    } // Tic-Tac-Toe
+        .site-nav {
+            &:hover .trigger {
+                #theme {
+                    display: none;
+                }
+            }
+        }
+        /**
+        *  Theme Dropdown Menu
+        */
+        .dropdown-content {
+            display: none;
+        }
+        .dropdown:hover .dropdown-content {
+            display: inline-block;
+            position: relative;
+        }
+    }
     button {
         color: $c2;
         background-color: $c1;
@@ -198,18 +226,4 @@ div#raiders {
 
 div#athletics {
     @include dropBtn($athletics-a, $athletics-b)
-}
-// Theme dropdown menu
-.site-header {
-    .trigger .dropdown {
-        position: relative;
-        display: inline-block;
-    }
-    .dropdown-content {
-        display: none;
-        position: absolute;
-    }
-    .dropdown:hover .dropdown-content {
-        display: block; // justify-content: left;
-    }
 }
