@@ -54,7 +54,6 @@ $jekyll-b: black;
                 padding-right: 0px;
             }
         }
-
         .wrapper .site-nav {
             color: $c1;
             background-color: $c2;
@@ -76,13 +75,18 @@ $jekyll-b: black;
         /**
         *  Theme Dropdown Menu
         */
+        .trigger .dropdown {
+            position: relative;
+            display: inline-block;
+        }
         .dropdown-content {
             display: none;
+            position: absolute;
         }
         .dropdown:hover .dropdown-content {
-            display: inline-block;
-            position: relative;
+            display: block;
         }
+
     }
     button {
         color: $c2;
