@@ -4,17 +4,15 @@
 
 "use strict";
 
-
-function main() {
-    console.log('main ready');
-    ticTacToe();
-    // $("#Theme").click(updateLink);
-}
-
 /**
  * DOM ready
  */
-$(document).ready(main);
 
+window.onload = () => {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "/javascript/tic_tac_toe.js";
+    document.body.appendChild(script);
+}
 
   
