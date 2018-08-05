@@ -3,9 +3,11 @@
  */
 
 .site-header {
-    // border-top: .5px solid $grey-color-dark;
     border-bottom: 1px solid $grey-color-light;
-    min-height: 56px; // Positioning context for the mobile navigation icon
+    /*
+    *Positioning context for the mobile navigation icon
+    */ 
+    min-height: 56px; 
     position: relative;
 }
 
@@ -21,37 +23,69 @@
     }
 }
 
-.site-team {
-    font-size: 21px;
-    line-height: 56px;
-    letter-spacing: -1px;
-    margin-bottom: 0;
-    margin-left: 30%;
-    margin-right: 30%;
-    padding-left: 5px;
-    float: center;
-    &,
-    &:visited {
-        color: $grey-color-dark;
-    }
-    a.page-link {
-        color: #424242 !important;
+.theme-icons {
+    display: block;
+}
+.theme-icon {
+    display: inline-block;
+    position: relative;
+
+    vertical-align: middle;
+    outline: none;
+    // font-size: 30px;
+
+    border-style: none;
+    border-radius: 12px;
+
+    /* underline, overline, line-through or blink */
+    text-decoration: none;
+    img {
+        width: 100px;
     }
 }
 
 .site-nav {
+    display: block;
     float: right;
     line-height: 56px;
     .menu-icon {
         display: none;
     }
-    .page-link {
-        //color: #424242 !important;
+    .page-link-dropdown {
         color: $text-color;
-        line-height: $base-line-height; // Gaps between nav items, but not on the first one
+        line-height: $base-line-height;
+        /*
+        * Gaps between nav items, but not on the first one
+        */
         &:not(:first-child) {
             margin-left: 20px;
         }
+    }
+    .page-link-dropdown {
+        display: inline-block;
+        position: relative;
+    }
+    .page-link-content {
+        display: none;
+        position: absolute;
+        background-color: $background-color;
+        /*
+        Align sub-menu with parent right side
+        */
+        width: max-content;
+        left:auto;
+        right:0;
+        margin-right:-10px;
+        a, div {
+            display: block;
+            text-align: right;
+            padding-right: 10px;
+            padding-left: 10px;
+            cursor: pointer;
+        }
+    }
+    .page-link-dropdown:hover .page-link-content {
+        display: block;
     }
     @include media-query($on-palm) {
         position: absolute;
@@ -78,17 +112,21 @@
                 }
             }
         }
-        .trigger {
-            clear: both;
+
+        .page-link-dropdown {
             display: none;
         }
-        &:hover .trigger {
+        &:hover .page-link-dropdown {
+            clear: both;
             display: block;
-            padding-bottom: 5px;
         }
-        .page-link {
-            display: block;
-            padding: 5px 10px;
+        /*
+            Keep submenus from display @media
+        */
+        &:hover .page-link-content{
+            a, div {
+                display: none;
+            }
         }
     }
 }
@@ -129,28 +167,28 @@
 
 .footer-col-1 {
     width: -webkit-calc(25% - (#{$spacing-unit} / 2));
-    width : calc(25% - (#{$spacing-unit} / 2));
+    width: calc(25% - (#{$spacing-unit} / 2));
 }
 
 .footer-col-2 {
     width: -webkit-calc(30% - (#{$spacing-unit} / 2));
-    width : calc(30% - (#{$spacing-unit} / 2));
+    width: calc(30% - (#{$spacing-unit} / 2));
 }
 
 .footer-col-3 {
     width: -webkit-calc(45% - (#{$spacing-unit} / 2));
-    width : calc(45% - (#{$spacing-unit} / 2));
+    width: calc(45% - (#{$spacing-unit} / 2));
 }
 
 @include media-query($on-laptop) {
     .footer-col-1,
     .footer-col-2 {
         width: -webkit-calc(50% - (#{$spacing-unit} / 2));
-        width : calc(50% - (#{$spacing-unit} / 2));
+        width: calc(50% - (#{$spacing-unit} / 2));
     }
     .footer-col-3 {
         width: -webkit-calc(100% - (#{$spacing-unit} / 2));
-        width : calc(100% - (#{$spacing-unit} / 2));
+        width: calc(100% - (#{$spacing-unit} / 2));
     }
 }
 
@@ -158,7 +196,7 @@
     .footer-col {
         float: none;
         width: -webkit-calc(100% - (#{$spacing-unit} / 2));
-        width : calc(100% - (#{$spacing-unit} / 2));
+        width: calc(100% - (#{$spacing-unit} / 2));
     }
 }
 
@@ -172,7 +210,6 @@
 
 .social li {
     display: inline;
-    float: left;
     background-repeat: no-repeat;
 }
 
@@ -204,47 +241,47 @@
 }
 
 li.delicious {
-    background-image: url("../images/delicious.png");
+    background-image: url("../images/social/delicious.png");
 }
 
 li.digg {
-    background-image: url("../images/digg.png");
+    background-image: url("../images/social/digg.png");
 }
 
 li.facebook {
-    background-image: url("../images/facebook.png");
+    background-image: url("../images/social/facebook.png");
 }
 
 li.flickr {
-    background-image: url("../images/flickr.png");
+    background-image: url("../images/social/flickr.png");
 }
 
 li.linkedin {
-    background-image: url("../images/linkedin.png");
+    background-image: url("../images/social/linkedin.png");
 }
 
 li.reddit {
-    background-image: url("../images/reddit.png");
+    background-image: url("../images/social/reddit.png");
 }
 
 li.rss {
-    background-image: url("../images/rss.png");
+    background-image: url("../images/social/rss.png");
 }
 
 li.twitter {
-    background-image: url("../images/twitter.png");
+    background-image: url("../images/social/twitter.png");
 }
 
 li.google {
-    background-image: url("../images/google.png");
+    background-image: url("../images/social/google.png");
 }
 
 li.github {
-    background-image: url("../images/github.png");
+    background-image: url("../images/social/github.png");
 }
 
 li.gmail {
-    background-image: url("../images/gmail.png");
+    background-image: url("../images/social/gmail.png");
 }
 
 /* SOCIAL ICONS - CSS3 */
@@ -350,4 +387,4 @@ li.gmail {
 
 .project-list {
     line-height: 15px
-  }
+}

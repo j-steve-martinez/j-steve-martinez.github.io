@@ -6,7 +6,7 @@
 
 function appendStyle(team) {
   if (document.getElementById("team-image")){
-    document.getElementById("team-image").src = "/images/"+team+".png";
+    document.getElementById("team-image").src = "/images/themes/"+team+".svg";
     document.getElementById("team-image").alt = team.toUpperCase();
   }
   $("body").attr('class', team);
@@ -54,23 +54,6 @@ function updateLink(e){
   // Get the parent node
   var nParent = nChild.parentNode;
 
-  // Create a replacement element
-  var nReplacment = document.createElement("div");
-  
-  // Give it an id
-  nReplacment.id = "Theme";
-  nReplacment.className = "page-link dropdown";
-  nReplacment.href = "#";
-  
-  // Create the a link
-  var themeLink = document.createElement("a");
-  themeLink.className = "page-link";
-  themeLink.href = nChild.href;
-  
-  // Create some content for the link
-  var eContent = document.createTextNode("Themes");
-  themeLink.appendChild(eContent);
-
   /**
    * TODO: make ajax call to get list
    */
@@ -82,22 +65,18 @@ function updateLink(e){
   ];
   
   var dropdown = document.createElement("div");
-  dropdown.className = "trigger dropdown-content";
+  dropdown.className = "page-link-content";
   themes.forEach(theme => {
       // console.log(theme);
       var themeIcon = document.createElement("div");
-      themeIcon.className = "dropbtn";
+      themeIcon.className = "page-link theme";
       themeIcon.innerText = theme;
       themeIcon.id = theme;
       dropdown.appendChild(themeIcon);
   });
 
-  // Add the content to the element
-  nReplacment.appendChild(themeLink);
-  nReplacment.appendChild(dropdown);
-
   // Replace the node
-  nParent.replaceChild(nReplacment, nChild);
+  nParent.appendChild(dropdown);
 
   $(".dropbtn").click(function(e){
       // console.log("dropbtn click");
@@ -110,10 +89,8 @@ $(document).ready(function(){
   // console.log('document ready says jquery');
   applyTeam();
   updateLink();
-  $(".icon").click(function(a){
+  $(".theme").click(function(a){
     // console.log(a.currentTarget.id);
-    // applyTeam(a.currentTarget.id);
-    $("button").blur();
     appendStyle(a.currentTarget.id)
   });
 });

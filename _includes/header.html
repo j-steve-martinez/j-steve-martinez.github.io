@@ -13,18 +13,23 @@
         </svg>
       </a>
       <div class="trigger">
-        {% for page in site.pages %} {% if page.title %}
-        <a id="{{ page.title }}" class="page-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
-        {% endif %} {% endfor %}
+        {% for page in site.pages %}
+          {% if page.title %}
+            <div class="page-link-dropdown">
+            <a id="{{ page.title }}" class="page-link-btn" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
+            {% if page.title == "Projects" %}
+              <div id="project-list" class="page-link-content">
+                {% for project in site.projects %}
+                  {% if project.title %}
+                    <a id="{{ project.title }}" class="page-link-list" href="{{ project.url | prepend: site.baseurl }}">{{ project.title }}</a>
+                  {% endif %}
+                {% endfor %}
+             </div>
+            {% endif %}
+          </div>
+          {% endif %}
+        {% endfor %}
       </div>
-      <select class="trigger">
-        {% for project in site.projects %} {% if project.title %}
-        <option>
-          <a id="{{ project.title }}" class="project-link" href="{{ project.url | prepend: site.baseurl }}">{{ project.title }}</a>
-        </option>
-        {% endif %} {% endfor %}
-      </select>
-      <!-- <a id="{{ project.title }}" class="project-link" href="{{ project.url | prepend: site.baseurl }}">{{ project.title }}</a> -->
     </nav>
   </div>
 </header>

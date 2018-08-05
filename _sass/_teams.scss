@@ -8,226 +8,113 @@
 $niners-a: gold;
 $niners-b: darkred;
 $niners-c: #f5eec6;
+
 $giants-a: #fe5a1d;
 $giants-b: black;
 $giants-c: #fcf1c7;
+
 $warriors-a: #ffce48;
 $warriors-b: #223c8d;
 $warriors-c: lighten($warriors-b, 45%);
+
 $sharks-a: #010101;
 $sharks-b: #187a86;
 $sharks-c: lighten($sharks-a, 75%);
+
 $athletics-a:#fec20e;
 $athletics-b:#004040;
+
 $raiders-a: white;
 $raiders-b: black;
 $raiders-c: silver;
+
 $jekyll-a: white;
 $jekyll-b: black;
 
-/**
- * team(header color, header background-color, page background-color)
- */
-
- @mixin team($c1, $c2, $c3) {
-    color: $c2;
-    @if $c3==$c1 {
-        background-color: lighten($c1, 35%);
-    }
-    @else {
-        background-color: $c3;
-    }
-    .site-header {
-        background-color: $c2;
-        .wrapper .site-title {
-            color: $c1;
-        }
-        .wrapper .site-nav .trigger {
-            .page-link {
-                color: $c1;
-                &:hover {
-                    color: $c3;
-                }
-            }
-            .dropdown .page-link{                
-                padding-top: 0px;
-                padding-right: 0px;
-            }
-        }
-        .wrapper .site-nav {
-            color: $c1;
-            background-color: $c2;
-            border-color: $c2;
-        }
-        .site-nav .menu-icon {
-            background-color: $c1;
-        }
-        .site-nav .trigger .dropdown .dropdown-content {
-            border: solid 1px $c3;
-        }
-        .site-nav {
-            &:hover .trigger {
-                #theme {
-                    display: none;
-                }
-            }
-        }
-        /**
-        *  Theme Dropdown Menu
-        */
-        .trigger .dropdown {
-            position: relative;
-            display: inline-block;
-        }
-        .dropdown-content {
-            display: none;
-            position: absolute;
-        }
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-
-    }
-    button {
-        color: $c2;
-        background-color: $c1;
-        border: solid 1px $c2;
-        padding-top: 3px;
-        padding-bottom: 3px;
-        cursor: pointer;
-    }
-    .box {
-        @if $c3==$c1 {
-            border-color: $c2;
-        }
-        @else {
-            border-color: $c1;
-        }
-    }
-}
-
-.giants {
-    @include team($giants-a, $giants-b, $giants-c)
-}
-
-.niners {
-    @include team($niners-a, $niners-b, $niners-c)
-}
-
-.warriors {
-    @include team($warriors-a, $warriors-b, $warriors-c)
-}
-
-.sharks {
-    @include team($sharks-a, $sharks-b, $sharks-c)
-}
-
-.athletics {
-    @include team($athletics-a, $athletics-b, $athletics-a)
-}
-
-.raiders {
-    @include team($raiders-a, $raiders-b, $raiders-c)
-}
-
-.jekyll {
-    @include team($jekyll_a, $jekyll-b, $jekyll-a)
-}
-
-/**
- * Team Buttons
- */
-
 @mixin icons($color, $bg) {
-    width: 75px;
-    height: 75px;
-    vertical-align: middle;
-    outline: none;
     color: darken($color, 50);
-    font-size: 30px;
-    border: solid $bg 1px;
-    border-radius: 12px;
-    /* underline, overline, line-through or blink */
-    text-decoration: none;
+    border-color: $bg;
+
     /* linear-gradient */
     background: $bg;
     -webkit-box-shadow: 5px 5px 3px #666666;
     -moz-box-shadow: 5px 5px 3px #666666;
     box-shadow: 5px 5px 3px #666666;
+
     /* offset-x, offset-y, blur-radius, color */
-    &:active {
-        -webkit-box-shadow: none;
-        -moz-box-shadow: none;
-        box-shadow: none;
-        border: solid $color 1px;
-    }
-    img {
-        display: inline-block;
-    }
+    // &:active {
+    //     border: solid $color 1px;
+    // }
 }
 
-button#giants {
-    @include icons($giants-b, $giants-a)
-}
-
-button#warriors {
-    @include icons($warriors-a, $warriors-b)
-}
-
-button#sharks {
-    @include icons($sharks-a, $sharks-b)
-}
-
-button#niners {
-    @include icons($niners-a, $niners-b)
-}
-
-button#athletics {
-    @include icons($athletics-a, $athletics-b)
-}
-
-button#raiders {
-    @include icons($raiders-a, $raiders-b)
-}
-
-button#jekyll {
-    @include icons($jekyll-a, darken($jekyll-a, 25))
-}
-
-@mixin dropBtn($c1, $c2) {
+@mixin colors($c1, $c2) {
     background-color: $c2;
     color: $c1;
-    line-height: 25px;
-    padding-left: 3px;
-    padding-right: 3px;
-    text-align: left;
-    border: none;
-    cursor: pointer;
-    .dropdown-content {
-        border: solid 1px $c1 !important;
+    // .theme-icons .theme-icon {
+    //     border-color: $c2;
+    // }
+}
+
+/**
+ * team(header color, header background-color, page background-color)
+ */
+
+ @mixin team($c1, $c2, $c3, $team) {
+    .#{$team} {
+        color: $c2;
+        @if $c3==$c1 {
+            background-color: lighten($c1, 35%);
+        }
+        @else {
+            background-color: $c3;
+        }
+
+        .site-header {
+            background-color: $c2;
+            .wrapper .site-title {
+                color: $c1;
+            }
+            .page-link-btn {
+                color: $c1;
+                &:hover {
+                    color: $c3;
+                }
+            }
+            .page-link-dropdown:hover {
+                .page-link-content a,
+                div {
+                    color: $c1;
+                    background-color: $c2;
+                    cursor: pointer;
+                }
+            }
+            .site-nav {
+                /* Three Horizontal Bars */ 
+                background-color: $c2;
+                border-color: $c2;
+                &:hover {
+                    background-color: $c2;
+                }
+                & a path {
+                    fill: $c1;
+                }
+            }
+        }
+        /* Theme Controll colors */
+        div#warriors {@include colors($warriors-a, $warriors-b)}
+        div#giants {@include colors($giants-a, $giants-b)}
+        div#niners {@include colors($niners-a, $niners-b)}
+        div#sharks {@include colors($sharks-a, $sharks-b)}
+        div#raiders {@include colors($raiders-a, $raiders-b)}
+        div#athletics {@include colors($athletics-a, $athletics-b)}
     }
 }
 
-div#warriors {
-    @include dropBtn($warriors-a, $warriors-b)
-}
-
-div#giants {
-    @include dropBtn($giants-a, $giants-b)
-}
-
-div#niners {
-    @include dropBtn($niners-a, $niners-b)
-}
-
-div#sharks {
-    @include dropBtn($sharks-a, $sharks-b)
-}
-
-div#raiders {
-    @include dropBtn($raiders-a, $raiders-b)
-}
-
-div#athletics {
-    @include dropBtn($athletics-a, $athletics-b)
-}
+/* Theme Colors */
+@include team($niners-a, $niners-b, $niners-c, 'niners');
+@include team($giants-a, $giants-b, $giants-c, 'giants');
+@include team($warriors-a, $warriors-b, $warriors-c, 'warriors');
+@include team($sharks-a, $sharks-b, $sharks-c, 'sharks');
+@include team($athletics-a, $athletics-b, $athletics-a, 'athletics');
+@include team($raiders-a, $raiders-b, $raiders-c, 'raiders');
+@include team($jekyll_a, $jekyll-b, $jekyll-a, 'jekyll');
