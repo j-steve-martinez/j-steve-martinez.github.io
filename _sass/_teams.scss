@@ -17,19 +17,20 @@ $warriors-a: #ffce48;
 $warriors-b: #223c8d;
 $warriors-c: lighten($warriors-b, 45%);
 
-$sharks-a: #010101;
+$sharks-a: white;
 $sharks-b: #187a86;
-$sharks-c: lighten($sharks-a, 75%);
+$sharks-c: #c4d3d4;
 
 $athletics-a:#fec20e;
 $athletics-b:#004040;
 
-$raiders-a: white;
+$raiders-a: silver;
 $raiders-b: black;
-$raiders-c: silver;
+$raiders-c: white;
 
 $jekyll-a: white;
 $jekyll-b: black;
+$jekyll-c: silver;
 
 @mixin icons($color, $bg) {
     color: darken($color, 50);
@@ -40,21 +41,12 @@ $jekyll-b: black;
     -webkit-box-shadow: 5px 5px 3px #666666;
     -moz-box-shadow: 5px 5px 3px #666666;
     box-shadow: 5px 5px 3px #666666;
-
-    /* offset-x, offset-y, blur-radius, color */
-    // &:active {
-    //     border: solid $color 1px;
-    // }
 }
 
 @mixin colors($c1, $c2) {
     background-color: $c2;
     color: $c1;
-    // .theme-icons .theme-icon {
-    //     border-color: $c2;
-    // }
 }
-
 /**
  * team(header color, header background-color, page background-color)
  */
@@ -67,6 +59,13 @@ $jekyll-b: black;
         }
         @else {
             background-color: $c3;
+        }
+        button {
+            color: $c1;
+            background-color: $c2;
+            &:hover {
+                color: lighten($color: $c1, $amount: 50);
+            }
         }
 
         .site-header {
@@ -99,6 +98,24 @@ $jekyll-b: black;
                     fill: $c1;
                 }
             }
+        }
+        .site-footer {
+            color: $c1;
+            a {
+                color: $c2;
+            }
+            @include media-query($on-palm) {                
+                .trigger {
+                    background-color: $c2;
+                }
+                a {
+                    color: $c1;
+                }
+            }
+        } 
+        svg {
+            fill: $c1;
+            color: $c1;
         }
         /* Theme Controll colors */
         div#warriors {@include colors($warriors-a, $warriors-b)}

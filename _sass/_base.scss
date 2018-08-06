@@ -21,9 +21,6 @@ body {
     -webkit-text-size-adjust: 100%;
 }
 
-html, body {
-    height: 100%;
-    }
 
 /**
  * Set `margin-bottom` to maintain vertical rhythm
@@ -119,6 +116,55 @@ blockquote {
     > :last-child {
         margin-bottom: 0;
     }
+}
+
+
+
+/*
+*  Button
+*/
+button {
+    /* RESET */
+    margin      : 0;
+    padding     : 0;
+    border      : 0;
+    background  : transparent;
+    font-family : inherit;
+    font-size   : 1em;
+    cursor      : pointer;
+}
+button::-moz-focus-inner{
+    padding : 0;
+    border  : 0;
+  }
+
+button {
+    /* CUSTOM */
+    display: inline-block;
+    
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 2px $grey-color;
+
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 3px;
+    padding-bottom: 2px;
+    margin: 1px;
+    color: $grey-color-dark;
+    background-color: $grey-color;
+}
+button:active {
+    color: $grey-color-light;
+    box-shadow: 0 1px $grey-color-dark;
+    transform: translateY(2px); 
+}
+button:hover {
+    color: $grey-color-light;
 }
 
 

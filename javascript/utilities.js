@@ -59,9 +59,8 @@ function updateLink(e){
    */
   // Create sub elements for each theme
   var themes = [
-      "warriors",
-      "niners",
-      "giants", "sharks", "raiders", "athletics"
+      "warriors", "niners", "giants", 
+      "sharks", "raiders", "athletics"
   ];
   
   var dropdown = document.createElement("div");
@@ -78,19 +77,21 @@ function updateLink(e){
   // Replace the node
   nParent.appendChild(dropdown);
 
-  $(".dropbtn").click(function(e){
-      // console.log("dropbtn click");
+  $(".theme").click(function(e){
+      // console.log("page-link-content theme click");
       // console.log(e.currentTarget.id);
       appendStyle(e.currentTarget.id);
   });
+
 }
 
 $(document).ready(function(){
   // console.log('document ready says jquery');
-  applyTeam();
-  updateLink();
-  $(".theme").click(function(a){
+  $(".theme-icon").click(function(a){
+    // console.log('theme icon click');
     // console.log(a.currentTarget.id);
     appendStyle(a.currentTarget.id)
   });
+  applyTeam();
+  updateLink();
 });
