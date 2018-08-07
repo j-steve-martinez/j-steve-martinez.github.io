@@ -21,9 +21,6 @@
     &:visited {
         color: $grey-color-dark;
     }
-    @include media-query($on-palm) {
-        margin-left: 35px;
-    }
 }
 
 .theme-icons {
@@ -35,7 +32,6 @@
 
     vertical-align: middle;
     outline: none;
-    // font-size: 30px;
 
     border-style: none;
     border-radius: 12px;
@@ -161,16 +157,12 @@
     }
 
     @include media-query($on-palm) {
-        position: fixed;
-        top: 0;
-        left: 0;
         border-radius: 5px;
-        text-align: right;
         margin-top: 0px;
-        width: fit-content;
         z-index: 0;
         .menu-icon {
-            display: block;
+            // display: block;
+            display: none;
             text-align: left;
             width: 20px;
             height: 20px;
@@ -183,14 +175,19 @@
                 height: 20px;
             }
         }
-        &:hover {
-            .social {
-                display: block;
-            }
-        }
+        // &:hover {
+        //     .social {
+        //         display: block;
+        //     }
+        // }
         .social {
-            display: none;
-            text-align: left;
+            display: inline-block;
+            padding-left: 1px;
+            padding-right: 1px;
+        }
+        .wrapper {
+            padding-left: 1px;
+            padding-right: 1px;
         }
     }
 }
