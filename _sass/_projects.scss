@@ -1,3 +1,44 @@
+#local-weather {
+    .weather-name {
+        padding: 1px;
+        text-align: right;
+        &.btn {
+            text-align: center;
+        }
+    }
+    
+    .weather-value {
+        padding-left: 5px;
+    }
+    .weather-wrapper {
+        display: grid;
+        grid-template-columns: max-content auto max-content auto;
+        background-repeat: no-repeat;
+        // background-position: -100px -150px;
+        background-position: center center;
+        background-size: 200%;
+        @include media-query($on-palm) {
+            background-position: center center;
+            background-size: 200%;
+        }    
+    }
+    .weather-image {
+        background-repeat: no-repeat;
+        background-position: -20px -10px;
+        background-size: 100%;
+        // color: currentColor;
+        // background-color: beige;
+        width: 100px;
+        height: 25px;
+        @include media-query($on-palm) {
+            width: 100%;
+            background-position: -2px -1px;
+            background-size: 100%;
+            border-radius: 0px;
+        }
+    }
+}
+
 // ***************** Markdown Editor *****************************
 #markdown-editor {
     $red: #ff0000;

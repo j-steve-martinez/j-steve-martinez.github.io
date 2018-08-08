@@ -138,7 +138,7 @@ button::-moz-focus-inner{
     border  : 0;
   }
 
-button {
+button, .btn {
     /* CUSTOM */
     display: inline-block;
     
@@ -158,12 +158,12 @@ button {
     color: $grey-color-dark;
     background-color: $grey-color;
 }
-button:active {
+button:active, .btn:active {
     color: $grey-color-light;
     box-shadow: 0 1px $grey-color-dark;
     transform: translateY(2px); 
 }
-button:hover {
+button:hover, .btn:hover {
     color: $grey-color-light;
 }
 
