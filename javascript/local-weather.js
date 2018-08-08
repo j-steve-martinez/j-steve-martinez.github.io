@@ -123,15 +123,12 @@ function geoSuccess(pos) {
 }
 
 function geoError(err) {
-    console.warn(`ERROR(${err.code}): ${err.message}`);
-
-    var weather = JSON.parse(getCookie("weather"));
-    // console.log(weather);
     /**
      * Get the node and update screen
      */
+    console.warn(`ERROR(${err.code}): ${err.message}`);
     var nChild = document.getElementById("local-weather");
-    nChild.innerText = "Yahoo...err ya.";
+    nChild.innerText = "It's always a great day even when, " + err.message + ", in bed";
 }
 
 function setLWScreen(weather) {
