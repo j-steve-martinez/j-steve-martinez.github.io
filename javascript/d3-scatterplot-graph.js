@@ -1,146 +1,190 @@
 'use strict';
-(function(){
+(function () {
 
-  var margin = {top: 20, right: 10, bottom: 50, left: 20};
+  var margin = {
+    top: 20,
+    right: 10,
+    bottom: 50,
+    left: 20
+  };
   var contentWidth = $("#d3-scatterplot-graph")[0].clientWidth;
-  var width = contentWidth - margin.left - margin.right,
-      height = contentWidth - margin.top - margin.bottom,
-      msgBox = {'width' : 250, 'height' : 100};
+  var width = contentWidth - margin.left - margin.right;
+  var contentHeight = 800;
+  var height = contentHeight - margin.top - margin.bottom;
+  var msgBox = {
+    'width': 250,
+    'height': 100
+  };
   var yLabel = 'Ranking';
   var xLabel = 'Minutes Behind Fastest Time';
 
   var x = d3.scaleLinear()
-          .range([0, width]);
+    .range([0, width]);
 
   var y = d3.scaleLinear()
-          .range([height, 0]);
+    .range([height, 0]);
 
   var xAxis = d3.axisBottom()
-      .scale(x);
+    .scale(x);
 
   var yAxis = d3.axisLeft()
-      .scale(y);
+    .scale(y);
 
   var title = d3.select("#d3-scatterplot-graph")
-                .append('h2')
-                .attr('class', 'title')
-                .text('Doping in Professional Bicycle Racing');
+    .append('h2')
+    .attr('class', 'title')
+    .text('Doping in Professional Bicycle Racing');
 
   d3.select("#d3-scatterplot-graph").append('h4').attr('class', 'title').text('35 Fastest times up Alpe d\'Huez');
   d3.select("#d3-scatterplot-graph").append('h5').attr('class', 'title').text('Normalized to 13.8km distance');
 
   var div = d3.select("#d3-scatterplot-graph").append('div')
-              .attr('class', 'tooltip')
-              .style('opacity', 0)
-              .style('width', msgBox.width + 'px')
-              .style('height', msgBox.height + 'px');
- 
+    .attr('class', 'tooltip')
+    .style('opacity', 0)
+    .style('width', msgBox.width + 'px')
+    .style('height', msgBox.height + 'px');
+
   var chart = d3.select("#d3-scatterplot-graph").append('div').attr('id', 'chart');
 
 
   var svg = d3.select('#chart').append('svg')
-                .attr('width', width + margin.left +  margin.right)
-                .attr('height', height + margin.top + margin.bottom)
-                .attr('xmlns:xlink', 'http://www.w3.org/1999/xlink')
-              .append("g")
-                .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+    .attr('width', width + margin.left + margin.right)
+    .attr('height', height + margin.top + margin.bottom)
+    .attr('xmlns:xlink', 'http://www.w3.org/1999/xlink')
+    .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 
-  d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/master/cyclist-data.json', function(err, data){
-  // d3.json('./cyclist-data.json', function(err, data){
-  // y scale is rank
-  var rank = [];
-  rank.push(data[data.length -1].Place + 2);
-  rank.push(data[0].Place);
+  d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/master/cyclist-data.json', function (err, data) {
+    // d3.json('./cyclist-data.json', function(err, data){
+    // y scale is rank
+    var rank = [];
+    rank.push(data[data.length - 1].Place + 2);
+    rank.push(data[0].Place);
 
-  // x scale is time for max to min
-  var time = [], fastest, slowest, diff;
-  slowest = data[data.length -1].Seconds;
-  fastest = data[0].Seconds;
-  diff = slowest - fastest;
-  time.push(diff + 5);
-  time.push(0);
+    // x scale is time for max to min
+    var time = [],
+      fastest, slowest, diff;
+    slowest = data[data.length - 1].Seconds;
+    fastest = data[0].Seconds;
+    diff = slowest - fastest;
+    time.push(diff + 5);
+    time.push(0);
 
-  x.domain(time)
-  y.domain(rank);
+    x.domain(time)
+    y.domain(rank);
 
-  // format in mm:ss
-  xAxis.tickFormat(formatMinutes);
-  xAxis.ticks(5);
+    // format in mm:ss
+    xAxis.tickFormat(formatMinutes);
+    xAxis.ticks(5);
 
-  svg.append("g")
+    svg.append("g")
       .attr("class", "x axis")
       .attr("transform", "translate(0," + height + ")")
       .call(xAxis)
 
-  svg.append("g")
+    svg.append("g")
       .attr("class", "y axis")
       .call(yAxis)
       .attr('dy', '10px')
 
-  svg.append('g')
+    svg.append('g')
       .attr('class', 'y text')
-    .append('text')
+      .append('text')
       .attr('transform', 'rotate(-90)')
       .attr('x', -66)
       .attr('y', 18)
       .text(yLabel);
 
-  svg.append('g')
+    svg.append('g')
       .attr('class', 'x text')
-    .append('text')
+      .append('text')
       .attr("text-anchor", "middle")
       .attr('y', height + margin.bottom)
       .attr('x', (width / 2))
       .text(xLabel);
 
-  svg.selectAll(".dot")
+    svg.selectAll(".dot")
       .data(data)
-    .enter().append("circle")
+      .enter().append("circle")
       .attr("class", "dot")
-      .attr('class', function(d) { return color(d.Doping); })
+      .attr('class', function (d) {
+        return color(d.Doping);
+      })
       .attr("r", 5)
-      .attr("cx", function(d) { return x(d.Seconds - fastest); })
-      .attr("cy", function(d) { return y(d.Place); })
-      .on("mouseover", function(d) {
-          div.transition()
-             .duration(200)
-             .style("opacity", .9);
-          div.html(showData(d))
-             .style("left", setBox('left', d))
-             .style("top",  setBox('top', d));
-          })
-      .on("mouseout", function(d) {
-          div.transition()
-             .duration(500)
-             .style("opacity", 0);
+      .attr("cx", function (d) {
+        return x(d.Seconds - fastest);
+      })
+      .attr("cy", function (d) {
+        return y(d.Place);
+      })
+      .on("mouseover", function (d) {
+        div.transition()
+          .duration(200)
+          .style("opacity", .9);
+        div.html(showData(d))
+          .style("left", setBox('left', d))
+          .style("top", setBox('top', d));
+      })
+      .on("mouseout", function (d) {
+        div.transition()
+          .duration(500)
+          .style("opacity", 0);
       });
 
-  svg.selectAll('a')
-    .data(data)
-    .enter().append('a')
-      .attr('xlink:href', function(d){
+    svg.selectAll('a')
+      .data(data)
+      .enter().append('a')
+      .attr('xlink:href', function (d) {
         var url = d.URL;
         if (d.URL === '') {
           url = "https://en.wikipedia.org/wiki/List_of_doping_cases_in_cycling";
         }
-          return url;
-        })
+        return url;
+      })
       .attr('target', 'blank')
-    .append('text')
+      .append('text')
       .attr('class', 'name')
-      .text(function(d){ return d.Name;})
+      .text(function (d) {
+        return d.Name;
+      })
       .attr('x', (d) => {
         // console.log(d);
         // Float text left of dot if text rolls past width
-        var totalLength = (x(d.Seconds - fastest) + 20) + d.Name.length;
+        var pos = Math.round(x(d.Seconds - fastest));
+        var totalLength = (d.Name.length * 6) + pos;
+        // console.log(width);
         if (totalLength > width) {
-          return x((d.Seconds - fastest) + (d.Name.length * 2) + 5);
+          // console.log(d);
+          // console.log('name.length ' + d.Name.length);
+          // console.log('width ' + width);
+          // console.log('totalLength ' + totalLength);
+          // console.log('x(dot): ' + (d.Seconds - fastest));
+          var scale = width / 10;
+          var dot = (d.Seconds - fastest);
+          var name = d.Name.length;
+          if (width < 400) {
+            dot += name * 2;
+            dot += scale * 2;
+            dot += 5;
+            console.log('scale <400 : ' + dot);
+            return x(dot);
+          } else {
+            dot += name * 2;
+            // dot += scale;
+            dot += 5;
+            console.log('scale 700 : ' + dot);
+            return x(dot);
+          }
         } else {
+          // console.log('small regular');
           return x(d.Seconds - fastest) + 10;
         }
+
       })
-      .attr('y', function(d) { return y(d.Place) + 5; });
+      .attr('y', function (d) {
+        return y(d.Place) + 5;
+      });
 
   });
   // function setName(d){
@@ -149,18 +193,18 @@
   //   return x(d.Seconds - fastest) + 10;
   // }
   // put the msg box at the top left
-  function setBox(side, data){
+  function setBox(side, data) {
     // console.log(side);
     // console.log(data);
     var value, top, left;
     var size = checkScreenSize();
-    
+
     var rect = document.getElementById("chart").getBoundingClientRect();
     // console.log(rect);
- 
+
     left = rect.left + (margin.left * 2);
     top = rect.top + margin.top;
- 
+
     if (side === 'top') {
       value = top + 'px';
     } else {
@@ -171,7 +215,7 @@
   }
 
   // show the doping data
-  function showData(d){
+  function showData(d) {
     var dope, html;
     // console.log(d);
 
@@ -186,11 +230,11 @@
       dope = d.Doping
     }
     html += "<div>Doping:" + dope + "</div>";
-   return html;
+    return html;
   }
 
   // set color based on doping
-  function color(d){
+  function color(d) {
     var color;
     if (d === "") {
       color = 'clean';
@@ -202,24 +246,27 @@
 
   function formatMinutes(duration) {
     var duration = duration * 1000;
-    var milliseconds = parseInt((duration%1000)/100)
-        , seconds = parseInt((duration/1000)%60)
-        , minutes = parseInt((duration/(1000*60))%60)
-        , hours = parseInt((duration/(1000*60*60))%24);
+    var milliseconds = parseInt((duration % 1000) / 100),
+      seconds = parseInt((duration / 1000) % 60),
+      minutes = parseInt((duration / (1000 * 60)) % 60),
+      hours = parseInt((duration / (1000 * 60 * 60)) % 24);
 
     hours = (hours < 10) ? hours : hours;
     minutes = (minutes < 10) ? minutes : minutes;
     seconds = (seconds < 10) ? seconds : seconds;
     return minutes + ":" + seconds
-    }
+  }
 
-  function checkScreenSize(){
+  function checkScreenSize() {
     var w = window,
-        d = document,
-        e = d.documentElement,
-        g = d.getElementsByTagName('body')[0],
-        x = w.innerWidth || e.clientWidth || g.clientWidth,
-        y = w.innerHeight|| e.clientHeight|| g.clientHeight;
-    return {'width' : x, 'height' : y};
+      d = document,
+      e = d.documentElement,
+      g = d.getElementsByTagName('body')[0],
+      x = w.innerWidth || e.clientWidth || g.clientWidth,
+      y = w.innerHeight || e.clientHeight || g.clientHeight;
+    return {
+      'width': x,
+      'height': y
+    };
   }
 })();
