@@ -56,26 +56,26 @@
     var color = {
       // green
       '1': {
-        mousedown: '#80ff80',
-        mouseup: '#008000',
+        mousedown: 'lightgreen',
+        mouseup: 'green',
         sound: 'https://s3.amazonaws.com/freecodecamp/simonSound2.mp3'
       },
       // red
       '2': {
-        mousedown: '#ff8080',
-        mouseup: '#ff0000',
+        mousedown: 'red',
+        mouseup: 'darkred',
         sound: 'https://s3.amazonaws.com/freecodecamp/simonSound1.mp3'
       },
       // yellow
       '3': {
-        mousedown: '#ffffcc',
-        mouseup: '#ffff00',
+        mousedown: 'gold',
+        mouseup: 'goldenrod',
         sound: 'https://s3.amazonaws.com/freecodecamp/simonSound4.mp3'
       },
       // blue
       '4': {
-        mousedown: '#8080ff',
-        mouseup: '#0000ff',
+        mousedown: 'lightblue',
+        mouseup: 'blue',
         sound: 'https://s3.amazonaws.com/freecodecamp/simonSound3.mp3'
       }
     };
@@ -302,8 +302,9 @@
       isOn ? isOn = false : isOn = true;
       if (isOn) {
         // turn on
-        $('#power').css('border-right', '0px solid black');
+        $('#power').css('border-right', '1px solid black');
         $('#power').css('border-left', '25px solid black');
+        $('#power').css('background-color', 'red');
         $('.label').css('color', 'red');
         $('#counter').css('color', 'red');
         animate('1');
@@ -313,8 +314,11 @@
         setTimeout(animateLabels, 2000);
       } else {
         // turn off
-        $('#power').css('border-left', '0px solid black');
+        $('#power').css('border-left', '1px solid black');
         $('#power').css('border-right', '25px solid black');
+        $('#power').css('background-color', 'darkred');
+
+
         $('.label').css('color', 'black');
         $('#counter').css('color', 'black');
         resetGame();
@@ -358,8 +362,107 @@
   };
   // end controller
 
+  function setHtml() {
+    /**
+     * get the root element
+     */
+    var root = document.getElementById("simon");
+    root.innerText = "";
+
+    /**
+     * Add big buttons
+     */
+    var bigButtons = {
+      1: "quarter quarter-tl",
+      2: "quarter quarter-tr",
+      3: "quarter quarter-bl",
+      4: "quarter quarter-br"
+    }
+    var bigBtnWrap = document.createElement("div");
+    bigBtnWrap.className = "bigBtnWrap";
+    Object.entries(bigButtons).forEach((arrayS, count) => {
+      var tmp = document.createElement("div");
+      tmp.id = arrayS[0];
+      tmp.className = arrayS[1];
+      bigBtnWrap.appendChild(tmp);
+    });
+
+    /**
+     * Add controls
+     */
+    var ctrlBtns = {
+      "simon": "logo",
+      "pad": "none",
+      "power": "none",
+      "power-label": "none",
+      "start-c": "small-circle btn",
+      "start": "label",
+      "strict-c": "small-circle btn",
+      "strict": "label",
+      "reset-c": "small-circle btn",
+      "reset": "label",
+      "pad2": "none",
+      "counter": "label",
+    }
+    var ctrlBtnsWrap = document.createElement("div");
+    ctrlBtnsWrap.className = "ctrlBtnsWrap";
+    Object.entries(ctrlBtns).forEach((arrayS, count) => {
+      var tmp = document.createElement("div");
+      tmp.id = arrayS[0];
+      tmp.className = arrayS[1];
+      if (arrayS[1] == "label") {
+        tmp.innerText = arrayS[0].toUpperCase();
+      }
+      if (arrayS[0] == "counter") {
+        tmp.innerText = "--";
+      }
+      if (arrayS[0] == "power-label") {
+        tmp.innerText = "POWER";
+      }
+      if (arrayS[0] == "simon") {
+        tmp.innerText = "SIMON SEEZ";
+      }
+      ctrlBtnsWrap.appendChild(tmp);
+    });
+
+    /**
+     * Create a wrapper and add to root
+     */
+    var simonWrap = document.createElement("div");
+    simonWrap.className = "simon-wrapper";
+    simonWrap.appendChild(ctrlBtnsWrap);
+    simonWrap.appendChild(bigBtnWrap);
+    root.appendChild(simonWrap);
+
+  }
+
+  function setSounds() {
+    var sounds = {
+      sound1: 'https://s3.amazonaws.com/freecodecamp/simonSound1.mp3',
+      sound2: 'https://s3.amazonaws.com/freecodecamp/simonSound2.mp3',
+      sound3: 'https://s3.amazonaws.com/freecodecamp/simonSound3.mp3',
+      sound4: 'https://s3.amazonaws.com/freecodecamp/simonSound4.mp3'
+    }
+    for (const sound in sounds) {
+      if (sounds.hasOwnProperty(sound)) {
+        /**
+         * Creating the sound object preloads the sound
+         */
+        var note = new Audio(sounds[sound]);
+      }
+    }
+  }
+
   $(document).ready(function () {
     'use strict';
+    /**
+     * init the sounds
+     */
+    setSounds();
+    /**
+     * create the html tags
+     */
+    setHtml("simon");
 
     var isChrome = !!window.chrome;
     if (isChrome) {

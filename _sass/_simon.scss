@@ -1,113 +1,91 @@
 #simon {
-  position: relative;
-  width: 500px;
-  height: 500px;
-  margin: 0 auto;
-  table {
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-  }
-  /**
- * Quarter Circles
- */
-  .quarter {
-    position: absolute;
-    width: 50%;
-    height: 50%;
-    transition: background-color 0.2s ease-in-out;
-    box-shadow: 0 0 0 15px black;
-  }
-  .quarter-tl {
-    top: 0;
-    left: 0;
-    background-color: green;
-    border-radius: 100% 0 0 0;
-    border-color: black;
-  }
-  .quarter-tr {
-    top: 0;
-    right: 0;
-    background-color: red;
-    border-radius: 0 100% 0 0;
-  }
-  .quarter-bl {
-    bottom: 0;
-    left: 0;
-    background-color: yellow;
-    border-radius: 0 0 0 100%;
-  }
-  .quarter-br {
-    bottom: 0;
-    right: 0;
-    background-color: blue;
-    border-radius: 0 0 100% 0;
-  }
-  .cutout {
-    width: 50%;
-    height: 50%;
-    background-color: white;
-    position: absolute;
-    top: 25%;
-    left: 25%;
-    border-radius: 50%;
-    pointer-events: auto;
-    box-shadow: 0 0 0 15px black;
-  }
-  .small-circle {
-    height: 25px;
-    width: 25px;
-    border-radius: 50%;
-    border: 3px solid black;
-  }
-  .small-circle:active {
-    position: relative;
-    top: 2px;
-  }
-  .uniform {
-    width: 65px;
-  }
-  .label {
-    color: red;
-    background-color: black;
-    border-radius: 5px;
-    height: 25px;
-  }
-  #heading {
-    margin-top: 20px;
-    margin-left: 70px;
-    margin-bottom: 5px
-  }
-  #reset-c {
-    background-color: red;
-    color: black;
-    margin-left: 13px;
-  }
-  #strict-c {
-    background-color: yellow;
-    color: black;
-    margin-left: 13px;
-  }
-  #start-c {
-    background-color: green;
-    margin-left: 17px;
-  }
-  #power {
-    background-color: #33ccff;
-    box-shadow: 0 0 0 2px black;
-    border-right: 25px solid black;
-    width: 25px;
-    height: 25px;
-  }
-  #counter {
-    width: 50px;
-    height: 50px;
-    border-radius: 10%;
-    background-color: black;
-    color: red;
-    margin-top: 10px;
-    text-align: center;
-    vertical-align: middle;
-    line-height: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  width: fit-content;
+  box-shadow:20px 20px 50px grey;
+  .simon-wrapper {
+    display: grid;
+    grid-template-columns: max-content max-content;
+    .ctrlBtnsWrap {
+      display: grid;
+      grid-template-columns: 50px 60px;
+      grid-column-gap: 5px;
+      grid-row-gap: 1px;
+      border-top: solid 1px black;
+      border-left: solid 1px black;
+      border-bottom: solid 1px black;
+      border-right: solid 1px transparent;
+      padding-left: 5px;
+      padding-bottom: 1px;
+      .small-circle {
+        float: right;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        margin-left: auto;
+        margin-right: 0;
+        &#start-c {
+          background-color: green;
+        }
+        &#strict-c {
+          background-color: goldenrod;
+        }
+        &#reset-c {
+          background-color: darkred;
+        }
+      }
+      .none {
+        width: 25px;
+        height: 25px;
+      }
+      .label {
+        background-color: black;
+        padding-top: 5px;
+        text-align: center;
+      }
+      .logo {
+        box-shadow: none;
+        margin-left: auto;
+        margin-right: 1px;
+        width: 100px;
+        padding-left: 5px;
+      }
+      #power {
+        background-color: darkred;
+        border-radius: 10%;
+        border-left: 1px solid black;
+        border-right: 25px solid black;
+        border-bottom: 1px solid black;
+        cursor: pointer;
+      }
+      #counter {
+        background-color: black;
+        color: red;
+      }
+    }
+    .bigBtnWrap {
+      display: grid;
+      grid-template-columns: max-content max-content;
+      grid-row-gap: 1px;
+      grid-column-gap: 1px;
+      border: solid 1px black;
+      .quarter {
+        width: 100px;
+        height: 100%;
+        cursor: pointer;
+      }
+      .quarter-tl {
+        background-color: green;
+      }
+      .quarter-tr {
+        background-color: darkred;
+      }
+      .quarter-bl {
+        background-color: goldenrod;
+      }
+      .quarter-br {
+        background-color: blue;
+      }
+    }
   }
 }
