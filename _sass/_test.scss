@@ -1,108 +1,18 @@
-  .colors-test-super-no-match-anything-check {
-    color: #80ff80;
-    color: #008000;
-    color: lightgreen;
-    color: green;
-    color: maroon;
-    color: #ff8080;
-    color: #ff0000;
-    color: #ffffcc;
-    color: #ffff00;
-    color: goldenrod;
-    color: gold;
-    color: #8080ff;
-    color: #0000ff;
-    color: red;
-    color: darkred;
-  }
-  #simon {
-    margin-left: auto;
-    margin-right: auto;
-    width: fit-content;
-    box-shadow:20px 20px 50px grey;
-    .simon-wrapper {
-      display: grid;
-      grid-template-columns: max-content max-content;
-      .ctrlBtnsWrap {
-        display: grid;
-        grid-template-columns: 50px 60px;
-        grid-column-gap: 5px;
-        grid-row-gap: 1px;
-        border-top: solid 1px black;
-        border-left: solid 1px black;
-        border-bottom: solid 1px black;
-        border-right: solid 1px transparent;
-        padding-left: 5px;
-        padding-bottom: 1px;
-        .small-circle {
-          float: right;
-          width: 25px;
-          height: 25px;
-          border-radius: 50%;
-          margin-left: auto;
-          margin-right: 0;
-          &#start-c {
-            background-color: green;
-          }
-          &#strict-c {
-            background-color: goldenrod;
-          }
-          &#reset-c {
-            background-color: darkred;
-          }
-        }
-        .none {
-          width: 25px;
-          height: 25px;
-        }
-        .label {
-          background-color: black;
-          padding-top: 5px;
-          text-align: center;
-        }
-        .logo {
-          box-shadow: none;
-          margin-left: auto;
-          margin-right: 1px;
-          width: 100px;
-          padding-left: 5px;
-        }
-        #power {
-          background-color: darkred;
-          border-radius: 10%;
-          border-left: 1px solid black;
-          border-right: 25px solid black;
-          border-bottom: 1px solid black;
-          cursor: pointer;
-        }
-        #counter {
-          background-color: black;
-          color: red;
-        }
-      }
-      .bigBtnWrap {
-        display: grid;
-        grid-template-columns: max-content max-content;
-        grid-row-gap: 1px;
-        grid-column-gap: 1px;
-        border: solid 1px black;
-        .quarter {
-          width: 100px;
-          height: 100%;
-          cursor: pointer;
-        }
-        .quarter-tl {
-          background-color: green;
-        }
-        .quarter-tr {
-          background-color: darkred;
-        }
-        .quarter-bl {
-          background-color: goldenrod;
-        }
-        .quarter-br {
-          background-color: blue;
-        }
-      }
-    }
-  }
+.colors-test-super-no-match-anything-check {
+  color: #80ff80;
+  color: #008000;
+  color: lightgreen;
+  color: green;
+  color: maroon;
+  color: #ff8080;
+  color: #ff0000;
+  color: #ffffcc;
+  color: #ffff00;
+  color: goldenrod;
+  color: gold;
+  color: #8080ff;
+  color: #0000ff;
+  color: red;
+  color: darkred;
+}
+  

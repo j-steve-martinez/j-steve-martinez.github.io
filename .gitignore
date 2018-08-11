@@ -37,3 +37,4 @@ _site/
 #Third Party Javascript Libraries
 /javascript/bootstrap*.js
 /javascript/jquery*.js
+/javascript/d3*.min.js
