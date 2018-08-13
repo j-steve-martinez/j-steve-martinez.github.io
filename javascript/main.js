@@ -3,7 +3,6 @@
  */
 
 "use strict";
-
 /**
  * DOM ready
  */
@@ -14,6 +13,7 @@ window.onload = () => {
     // script.src = "/javascript/tic_tac_toe.js";
     // document.body.appendChild(script);
     setHtml("main");
+    animate("content");
 }
 
 function setHtml(id) {
@@ -22,7 +22,7 @@ function setHtml(id) {
      // var root = document.getElementsByTagName("body")["0"];
      */
     var root = document.getElementById(id);
-    root.innerText = "";
+    root.innerText = new Date();
 
     /**
      * Add Content
@@ -45,6 +45,5 @@ function setHtml(id) {
         }
         content.appendChild(element);
     });
-
     root.appendChild(content);
 }

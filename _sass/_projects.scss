@@ -509,3 +509,10 @@ div.tooltip {
         fill: $color3;
     }
 }
+/*                d3 contiguity                     */
+#d3-contiguity {
+    .links line {
+      stroke: black;
+      stroke-opacity: 0.6;
+    }
+  }
