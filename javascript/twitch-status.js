@@ -7,15 +7,18 @@
  twitch client id: eb4svq23ayn4ldow0gkszcrq3b0fsh
  */
 (() => {
+    'use strict';
     $(document).ready((e) => {
         // console.log('jquery says ready');
-        // $("#all").hide();
+        main();
+    });
+    function main() {
+        // console.log("main");
 
+        setPage();
         $("#online").hide();
         $("#offline").hide();
-
-        main();
-
+        getUsers();
         // set click handlers for tab controlls
         $("#tab-all").click((e) => {
             // console.log(e);
@@ -46,25 +49,80 @@
             $("#tab-online").attr("class", "");
 
         });
-    });
-
-    function main() {
-        'use strict';
-        // console.log("main");
-
-        //clear out existing data
-        $("#all").children().remove();
-        $("#online").children().remove();
-        $("#offline").children().remove();
-        getUsers();
     }
+    function setPage(){
+    /**
+     * get the root element
+     // var root = document.getElementsByTagName("body")["0"];
+     */
+    var root = document.getElementById('twitch-status');
+    root.innerText = "";
+    root.className = "wrapper";
 
+    /**
+     * Add Content
+     */
+    var contents = {
+        "tab-all": ["", "All"],
+        "tab-online": ["", "Online"],
+        "tab-offline": ["", "Offline"],
+        "all": ["list-group", ""],
+        "online": ["list-group", ""],
+        "offline": ["list-group", ""],
+    }
+    var content = document.createElement("div");
+    content.className = "twitch-users"
+    var control = document.createElement("div");
+    control.className = "twitch-control"
+    Object.entries(contents).forEach((entries, count) => {
+        // console.log(entries[0]);
+        // console.log(entries[1]);
+        // console.log(count);
+        var child;
+        switch (entries[1][0]) {
+            case "":
+                child = document.createElement("button");
+                child.id = entries[0];
+                child.className = entries[1][0];
+                child.innerText = entries[1][1];
+                control.appendChild(child);
+                break;
+            case "list-group":
+                child = document.createElement("div");
+                child.id = entries[0];
+                child.className = entries[1][0];
+                child.innerText = entries[1][1];
+                content.appendChild(child);
+                break;
+            default:
+                break;
+        }
+    });
+    root.appendChild(control);
+    root.appendChild(content);
+    // console.log(root);
+    }
     function getUsers(status) {
         'use strict';
-        var users = ["riotgamesturkish", "freecodecamp", "storbeck", "terakilobyte", "habathcx", "RobotCaleb", "thomasballinger", "noobs2ninjas", "beohoff", "brunofin", "comster404"];
+        var users = [
+            "sco",
+            "AtheneLIVE", 
+            "freecodecamp", 
+            "Asmongold", 
+            "terakilobyte", 
+            "RiotGamesBrazil", 
+            "RobotCaleb", 
+            "sodapoppin", 
+            "noobs2ninjas", 
+            "beohoff", 
+            "brunofin",
+            "TSM_Daequan",
+            "TSM_Myth"
+        ];
         //var user = users[0];
         users.forEach(function (user) {
             // console.log(user);
+            var userInfo;
             $.getJSON('https://wind-bow.gomix.me/twitch-api/users/' + user + '?callback=?').then(function (data) {
                 // console.log("getUsers");
                 // console.log(data);
@@ -89,7 +147,7 @@
                     }
                 }
                 // set empty logo with generic
-                data.logo != null ? logo = data.logo : logo = "/images/person.png";
+                data.logo != null ? logo = data.logo : logo = "/images/misc/person.png";
 
                 userInfo = {
                     name: name,
@@ -99,10 +157,8 @@
                 };
                 getStream(userInfo);
             });
-
         });
     }
-
     function getStream(user) {
         'use strict';
         //console.log(user.name);
@@ -143,13 +199,10 @@
             sortAll();
         });
     }
-
     function sortAll() {
-        var elem = $('#all').find('a').sort(sortMe);
-
-        function sortMe(a, b) {
+        var elem = $('#all').find('a').sort((a, b) => {
             return a.className < b.className;
-        }
+        });
         $('#all').append(elem);
     }
 })();

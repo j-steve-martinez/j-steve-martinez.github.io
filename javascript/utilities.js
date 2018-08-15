@@ -245,11 +245,11 @@ function getData() {
     return data;
 }
 
-/**
- * Force Menu
- * TEST
- */
 function animate(id) {
+    /**
+     * Force Menu
+     * TEST
+     */
     if (id == undefined) {
         return;
     } else {
@@ -392,7 +392,6 @@ function animate(id) {
         d.fy = null;
     }
 }
-
 
 $(document).ready(function () {
     // console.log('document ready says jquery');
