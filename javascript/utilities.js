@@ -124,7 +124,7 @@ function updateLink(e) {
     themes.forEach(theme => {
         // console.log(theme);
         var themeIcon = document.createElement("div");
-        themeIcon.className = "page-link theme";
+        themeIcon.className = "page-link-list theme";
         themeIcon.innerText = theme;
         themeIcon.id = theme;
         dropdown.appendChild(themeIcon);

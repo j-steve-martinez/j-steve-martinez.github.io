@@ -23,6 +23,7 @@ $sharks-c: #c4d3d4;
 
 $athletics-a:#fec20e;
 $athletics-b:#004040;
+$athletics-c:#f5da89;
 
 $raiders-a: silver;
 $raiders-b: black;
@@ -43,9 +44,12 @@ $jekyll-c: silver;
     box-shadow: 5px 5px 3px #666666;
 }
 
-@mixin colors($c1, $c2) {
+@mixin colors($c1, $c2, $c3) {
     background-color: $c2;
     color: $c1;
+    &:hover {
+        color: $c3;
+    }
 }
 /**
  * team(header color, header background-color, page background-color)
@@ -64,7 +68,8 @@ $jekyll-c: silver;
             color: $c1;
             background-color: $c2;
             &:hover, .btn:hover {
-                color: lighten($color: $c1, $amount: 50);
+                // color: lighten($color: $c1, $amount: 50);
+                color: $c3;
             }
         }
 
@@ -85,6 +90,9 @@ $jekyll-c: silver;
                     color: $c1;
                     background-color: $c2;
                     cursor: pointer;
+                }
+                .page-link-list:hover {
+                    color: $c3;
                 }
             }
             .site-nav {
@@ -118,12 +126,12 @@ $jekyll-c: silver;
             color: $c1;
         }
         /* Theme Controll colors */
-        div#warriors {@include colors($warriors-a, $warriors-b)}
-        div#giants {@include colors($giants-a, $giants-b)}
-        div#niners {@include colors($niners-a, $niners-b)}
-        div#sharks {@include colors($sharks-a, $sharks-b)}
-        div#raiders {@include colors($raiders-a, $raiders-b)}
-        div#athletics {@include colors($athletics-a, $athletics-b)}
+        div#warriors {@include colors($warriors-a, $warriors-b, $warriors-c)}
+        div#giants {@include colors($giants-a, $giants-b, $giants-c)}
+        div#niners {@include colors($niners-a, $niners-b, $niners-c)}
+        div#sharks {@include colors($sharks-a, $sharks-b, $sharks-c)}
+        div#raiders {@include colors($raiders-a, $raiders-b, $raiders-c)}
+        div#athletics {@include colors($athletics-a, $athletics-b, $athletics-c)}
     }
 }
 
@@ -132,6 +140,6 @@ $jekyll-c: silver;
 @include team($giants-a, $giants-b, $giants-c, 'giants');
 @include team($warriors-a, $warriors-b, $warriors-c, 'warriors');
 @include team($sharks-a, $sharks-b, $sharks-c, 'sharks');
-@include team($athletics-a, $athletics-b, $athletics-a, 'athletics');
+@include team($athletics-a, $athletics-b, $athletics-c, 'athletics');
 @include team($raiders-a, $raiders-b, $raiders-c, 'raiders');
-@include team($jekyll_a, $jekyll-b, $jekyll-a, 'jekyll');
+@include team($jekyll_a, $jekyll-b, $jekyll-c, 'jekyll');
