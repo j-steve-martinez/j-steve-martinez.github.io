@@ -5,17 +5,17 @@
 * example: <body class="giants">
 */
 
-$niners-a: gold;
-$niners-b: darkred;
-$niners-c: #f5eec6;
+$niners-a: #d8b802;
+$niners-b: #bb0202;
+$niners-c: #ffffff;
 
 $giants-a: #fe5a1d;
 $giants-b: black;
 $giants-c: #fcf1c7;
 
 $warriors-a: #ffce48;
-$warriors-b: #223c8d;
-$warriors-c: lighten($warriors-b, 45%);
+$warriors-b: #176cbb;
+$warriors-c: #c3def8;
 
 $sharks-a: white;
 $sharks-b: #187a86;
@@ -29,9 +29,9 @@ $raiders-a: silver;
 $raiders-b: black;
 $raiders-c: white;
 
-$jekyll-a: white;
-$jekyll-b: black;
-$jekyll-c: silver;
+$jekyll-a: black;
+$jekyll-b: white;
+$jekyll-c: grey;
 
 @mixin icons($color, $bg) {
     color: darken($color, 50);
@@ -124,6 +124,9 @@ $jekyll-c: silver;
         svg {
             fill: $c1;
             color: $c1;
+        }
+        a, .post-link {
+            color: $c2;
         }
         /* Theme Controll colors */
         div#warriors {@include colors($warriors-a, $warriors-b, $warriors-c)}

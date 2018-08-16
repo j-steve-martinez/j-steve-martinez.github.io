@@ -88,7 +88,7 @@
     }
     .page-link-dropdown:hover .page-link-content {
         display: block;
-    }
+    }    
     @include media-query($on-palm) {
         position: absolute;
         top: 9px;
@@ -211,15 +211,15 @@
 }
 
 .page-image {
-    float: right;
-    height: 100px;
-    width: 100px;
+    position: absolute;
+    top: 3px;
+    margin-left: 10px;
+    width: 50px;
+    height: 50px;
     @include media-query($on-palm){
         position: absolute;
         top: 3px;
         right: 70px;
-        width: 50px;
-        height: 50px;
     }
 }
 
