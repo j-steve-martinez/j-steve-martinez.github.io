@@ -22,7 +22,7 @@ function setHtml(id) {
      // var root = document.getElementsByTagName("body")["0"];
      */
     var root = document.getElementById(id);
-    root.innerText = new Date();
+    root.innerText = "";
 
     /**
      * Add Content

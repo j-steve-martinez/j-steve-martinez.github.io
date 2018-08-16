@@ -68,40 +68,6 @@ function applyTeam() {
  * Insert custom select option for colors
  */
 function updateLink(e) {
-    // var graph = {};
-    // var graph = {
-    //     "nodes" : [
-    //         {"id": "Myriel", "group": 1},
-    //         {"id": "Napoleon", "group": 1},
-    //         {"id": "Mlle.Baptistine", "group": 1},
-    //         {"id": "Mme.Magloire", "group": 1},
-    //         {"id": "CountessdeLo", "group": 1},
-    //         {"id": "Geborand", "group": 1},
-    //         {"id": "Champtercier", "group": 1},
-    //         {"id": "Cravatte", "group": 1},
-    //         {"id": "Count", "group": 1},
-    //         {"id": "OldMan", "group": 1},
-    //         {"id": "Labarre", "group": 2},
-    //         {"id": "Valjean", "group": 2},
-    //         {"id": "Marguerite", "group": 3}
-    // ],
-    //     "links" : [
-    //         {"source": "Napoleon", "target": "Myriel", "value": 1},
-    //         {"source": "Mlle.Baptistine", "target": "Myriel", "value": 1},
-    //         {"source": "Mme.Magloire", "target": "Myriel", "value": 1},
-    //         {"source": "Mme.Magloire", "target": "Mlle.Baptistine", "value": 1},
-    //         {"source": "CountessdeLo", "target": "Myriel", "value": 1},
-    //         {"source": "Geborand", "target": "Myriel", "value": 1},
-    //         {"source": "Champtercier", "target": "Myriel", "value": 1},
-    //         {"source": "Cravatte", "target": "Myriel", "value": 1},
-    //         {"source": "Count", "target": "Myriel", "value": 2},
-    //         {"source": "OldMan", "target": "Myriel", "value": 1},
-    //         {"source": "Valjean", "target": "Labarre", "value": 1},
-    //         {"source": "Valjean", "target": "Mme.Magloire", "value": 3},
-    //         {"source": "Valjean", "target": "Marguerite", "value": 3}
-    //     ]
-    // }
-
     // console.log(e.currentTarget.id);
 
     // Get the Elemenet to be replaced
@@ -144,111 +110,173 @@ function updateLink(e) {
 /**
  * Create node/links for <a> tags
  */
-function getData() {
+function getData(type) {
+    // var graph = {};
+    // var graph = {
+    //     "nodes" : [
+    //         {"id": "Myriel", "group": 1},
+    //         {"id": "Napoleon", "group": 1},
+    //         {"id": "Mlle.Baptistine", "group": 1},
+    //         {"id": "Mme.Magloire", "group": 1},
+    //         {"id": "CountessdeLo", "group": 1},
+    //         {"id": "Geborand", "group": 1},
+    //         {"id": "Champtercier", "group": 1},
+    //         {"id": "Cravatte", "group": 1},
+    //         {"id": "Count", "group": 1},
+    //         {"id": "OldMan", "group": 1},
+    //         {"id": "Labarre", "group": 2},
+    //         {"id": "Valjean", "group": 2},
+    //         {"id": "Marguerite", "group": 3}
+    // ],
+    //     "links" : [
+    //         {"source": "Napoleon", "target": "Myriel", "value": 1},
+    //         {"source": "Mlle.Baptistine", "target": "Myriel", "value": 1},
+    //         {"source": "Mme.Magloire", "target": "Myriel", "value": 1},
+    //         {"source": "Mme.Magloire", "target": "Mlle.Baptistine", "value": 1},
+    //         {"source": "CountessdeLo", "target": "Myriel", "value": 1},
+    //         {"source": "Geborand", "target": "Myriel", "value": 1},
+    //         {"source": "Champtercier", "target": "Myriel", "value": 1},
+    //         {"source": "Cravatte", "target": "Myriel", "value": 1},
+    //         {"source": "Count", "target": "Myriel", "value": 2},
+    //         {"source": "OldMan", "target": "Myriel", "value": 1},
+    //         {"source": "Valjean", "target": "Labarre", "value": 1},
+    //         {"source": "Valjean", "target": "Mme.Magloire", "value": 3},
+    //         {"source": "Valjean", "target": "Marguerite", "value": 3}
+    //     ]
+    // }
 
-    var allLinks = document.getElementsByTagName("a");
-    // console.log(test.length);
-    // console.log(test["0"].childElementCount);
-    // console.log(Object.keys(test));
-    var nodes = [],
-        menuNum = 0;
-    for (const element of allLinks) {
-        // for (const iterator of element) {
-        // console.log(typeof element);
-        // console.log(Object.keys(element));
-        // }
-        // console.log(element);
-        // console.log(element.className);
-        // console.log(element.childNodes);
-
-        // console.log('true?');
-        // console.log(element.id);
-        /**
-         * make some node
-         */
-        var node = {};
-        switch (element.className) {
-            case 'site-title':
-                node.id = "Sweet Home";
-                node.group = "1";
-                break;
-            case 'menu-icon':
-                menuNum += 1;
-                node.id = "menu-" + menuNum;
-                node.group = "2";
-                break;
-            case 'page-link-btn':
-                node.id = element.id;
-                node.group = "3";
-                break;
-            case 'page-link-list':
-                node.id = element.id;
-                node.group = "4";
-                break;
-            default:
-                node.id = element.id;
-                node.group = "5";
-                break;
-        }
-        if (node.id) {
+    if (type == "date") {
+        // console.log('date');
+        var data = {},
+            nodes = [],
+            links = [];
+        var newDate = new Date().toString().replace(/\(/, "").replace(/\)/, "").replace(/\-/, " ").split(" ");
+        console.log(new Date().toString().replace(/\(/, "").replace(/\)/, ""));
+        newDate.forEach((curVal, index, ary) => {
+            var node = {},
+                link = {};
+            node.id = curVal;
+            node.group = index;
             nodes.push(node);
-        }
-        // console.log(node);
-    }
-    // console.log(nodes);
-    var links = [];
-    for (const node of nodes) {
-        var link = {};
-        // console.log(node);
-        switch (node.group) {
-            case "2":
-                link.source = node.id;
-                link.target = "Sweet Home";
-                link.value = 1;
-                break;
-            case "3":
-                link.source = node.id;
-                link.target = "menu-1";
-                link.value = 1;
-                break;
-            case "4":
-                link.source = node.id;
-                link.target = "Projects";
-                link.value = 1;
-                break;
-            case "5":
-                link.source = node.id;
-                link.target = "menu-2";
-                link.value = 5;
-                break;
-            default:
-                break;
-        }
-        if (link.source) {
-            links.push(link);
-        }
-    }
-    // console.log(links);
-    // {"source": "Valjean", "target": "Marguerite", "value": 3}
-    // site-title
-    //  menu-icon
+            switch (index) {
+                case 0:
+                    // console.log('no link on first 0');
+                    break;
+                default:
+                    link.source = ary[index];
+                    link.target = ary[(index - 1)];
+                    link.value = 0;
+                    links.push(link);
+                    break;
+            }
+        });
+        data.links = links;
+        data.nodes = nodes;
+    } else {
+        var allLinks = document.getElementsByTagName("a");
+        // console.log(test.length);
+        // console.log(test["0"].childElementCount);
+        // console.log(Object.keys(test));
+        var nodes = [],
+            menuNum = 0;
+        for (const element of allLinks) {
+            // for (const iterator of element) {
+            // console.log(typeof element);
+            // console.log(Object.keys(element));
+            // }
+            // console.log(element);
+            // console.log(element.className);
+            // console.log(element.childNodes);
 
-    //  page-link-btn
+            // console.log('true?');
+            // console.log(element.id);
+            /**
+             * make some node
+             */
+            var node = {};
+            switch (element.className) {
+                case 'site-title':
+                    node.id = "Sweet Home";
+                    node.group = "1";
+                    break;
+                case 'menu-icon':
+                    menuNum += 1;
+                    node.id = "menu-" + menuNum;
+                    node.group = "2";
+                    break;
+                case 'page-link-btn':
+                    node.id = element.id;
+                    node.group = "3";
+                    break;
+                case 'page-link-list':
+                    node.id = element.id;
+                    node.group = "4";
+                    break;
+                default:
+                    node.id = element.id;
+                    node.group = "5";
+                    break;
+            }
+            if (node.id) {
+                nodes.push(node);
+            }
+            // console.log(node);
+        }
+        // console.log(nodes);
+        var links = [];
+        for (const node of nodes) {
+            var link = {};
+            // console.log(node);
+            switch (node.group) {
+                case "2":
+                    link.source = node.id;
+                    link.target = "Sweet Home";
+                    link.value = 1;
+                    break;
+                case "3":
+                    link.source = node.id;
+                    link.target = "menu-1";
+                    link.value = 1;
+                    break;
+                case "4":
+                    link.source = node.id;
+                    link.target = "Projects";
+                    link.value = 1;
+                    break;
+                case "5":
+                    link.source = node.id;
+                    link.target = "menu-2";
+                    link.value = 5;
+                    break;
+                default:
+                    break;
+            }
+            if (link.source) {
+                links.push(link);
+            }
+        }
+        // console.log(links);
+        // {"source": "Valjean", "target": "Marguerite", "value": 3}
+        // site-title
+        //  menu-icon
 
-    //  page-link-list
-    //  page-link-btn
-    //  menu-icon
-    var data = {};
-    data.nodes = nodes;
-    data.links = links;
+        //  page-link-btn
+
+        //  page-link-list
+        //  page-link-btn
+        //  menu-icon
+        var data = {};
+        data.nodes = nodes;
+        data.links = links;
+    }
+    console.log('data: ');
     console.log(data);
     return data;
 }
 
 function animate(id) {
     /**
-     * Force Menu
-     * TEST
+     * Date SVG
      */
     if (id == undefined) {
         return;
@@ -259,16 +287,16 @@ function animate(id) {
         'width': 100,
         'height': 10
     };
-    var graph = getData();
+    var graph = getData("date");
 
     var main = d3.select(id);
     var svgWidth = main["_groups"][0][0].clientWidth;
     main.append('svg')
-        .attr('id', "menu-svg")
+        .attr('id', "date-svg")
         .attr("width", svgWidth - 25)
         .attr("height", svgWidth / 2);
 
-    var svg = d3.select("#menu-svg");
+    var svg = d3.select("#date-svg");
 
     var width = svg["_groups"][0][0].clientWidth;
     var height = svg["_groups"][0][0].clientHeight;
@@ -285,27 +313,27 @@ function animate(id) {
             /**
              * Set force based on group
              */
-            var force;
-            switch (d.group) {
-                case "1":
-                    force = 5;
-                    break;
-                case "2":
-                    force = 15;
-                    break;
-                case "3":
-                    force = 20;
-                    break;
-                case "4":
-                    force = 30;
-                    break;
-                case "5":
-                    force = 25;
-                    break;
-                default:
-                    force = 5;
-                    break;
-            }  
+            var force = 5;
+            // switch (d.group) {
+            //     case "1":
+            //         force = 5;
+            //         break;
+            //     case "2":
+            //         force = 15;
+            //         break;
+            //     case "3":
+            //         force = 20;
+            //         break;
+            //     case "4":
+            //         force = 30;
+            //         break;
+            //     case "5":
+            //         force = 25;
+            //         break;
+            //     default:
+            //         force = 5;
+            //         break;
+            // }
             return force;
         }));
 
@@ -324,7 +352,7 @@ function animate(id) {
         .data(graph.nodes)
         .enter().append("circle")
         .attr("r", (d) => {
-            return d.id.length * 2;
+            return 5;
         })
         .attr("fill", function (d) {
             return color(d.group);
@@ -334,15 +362,19 @@ function animate(id) {
             .on("drag", dragged)
             .on("end", dragended));
 
-    node.append("title")
-        .text(function (d) {
+    var junk = svg.append("g")
+        .attr("class", "text")
+        .selectAll("text")
+        .data(graph.nodes)
+        .enter().append("text")
+        .attr("class", "text")
+        .text((d) => {
             return d.id;
-        });
-    node.append("text")
-        .attr("href", "#")
-        .text(function (d) {
-            return d.id;
-        });
+        })
+        .call(d3.drag()
+            .on("start", dragstarted)
+            .on("drag", dragged)
+            .on("end", dragended));
 
     simulation
         .nodes(graph.nodes)
@@ -373,6 +405,13 @@ function animate(id) {
             .attr("cy", function (d) {
                 return d.y;
             });
+        junk 
+            .attr("x", function (d) {
+                return d.x + 5;
+            })
+            .attr("y", function (d) {
+                return d.y;
+            });
     }
 
     function dragstarted(d) {
@@ -391,6 +430,7 @@ function animate(id) {
         d.fx = null;
         d.fy = null;
     }
+
 }
 
 $(document).ready(function () {
