@@ -111,7 +111,9 @@ function updateLink(e) {
  * Create node/links for <a> tags
  */
 function getData(type) {
-    // var graph = {};
+    /**
+     * Test Data
+     */
     // var graph = {
     //     "nodes" : [
     //         {"id": "Myriel", "group": 1},
@@ -151,7 +153,7 @@ function getData(type) {
             nodes = [],
             links = [];
         var newDate = new Date().toString().replace(/\(/, "").replace(/\)/, "").replace(/\-/, " ").split(" ");
-        console.log(new Date().toString().replace(/\(/, "").replace(/\)/, ""));
+        // console.log(new Date().toString().replace(/\(/, "").replace(/\)/, ""));
         newDate.forEach((curVal, index, ary) => {
             var node = {},
                 link = {};
@@ -174,22 +176,10 @@ function getData(type) {
         data.nodes = nodes;
     } else {
         var allLinks = document.getElementsByTagName("a");
-        // console.log(test.length);
-        // console.log(test["0"].childElementCount);
-        // console.log(Object.keys(test));
         var nodes = [],
             menuNum = 0;
         for (const element of allLinks) {
-            // for (const iterator of element) {
-            // console.log(typeof element);
-            // console.log(Object.keys(element));
-            // }
-            // console.log(element);
-            // console.log(element.className);
-            // console.log(element.childNodes);
 
-            // console.log('true?');
-            // console.log(element.id);
             /**
              * make some node
              */
@@ -255,22 +245,13 @@ function getData(type) {
                 links.push(link);
             }
         }
-        // console.log(links);
-        // {"source": "Valjean", "target": "Marguerite", "value": 3}
-        // site-title
-        //  menu-icon
 
-        //  page-link-btn
-
-        //  page-link-list
-        //  page-link-btn
-        //  menu-icon
         var data = {};
         data.nodes = nodes;
         data.links = links;
     }
-    console.log('data: ');
-    console.log(data);
+    // console.log('data: ');
+    // console.log(data);
     return data;
 }
 
@@ -290,19 +271,19 @@ function animate(id) {
     var graph = getData("date");
 
     var main = d3.select(id);
-    var svgWidth = main["_groups"][0][0].clientWidth;
+    var width = main["_groups"][0][0].clientWidth;
+    var height = width / 3;
+    if (width < 300) {
+        width = 300;
+        height = 200;
+    }
     main.append('svg')
         .attr('id', "date-svg")
-        .attr("width", svgWidth - 25)
-        .attr("height", svgWidth / 2);
+        .attr("width", width)
+        .attr("height", height);
 
     var svg = d3.select("#date-svg");
-
-    var width = svg["_groups"][0][0].clientWidth;
-    var height = svg["_groups"][0][0].clientHeight;
-
     var color = d3.scaleOrdinal(d3.schemeCategory20);
-
     var simulation = d3.forceSimulation()
         .force("link", d3.forceLink().id(function (d) {
             return d.id;
@@ -310,30 +291,7 @@ function animate(id) {
         .force("charge", d3.forceManyBody())
         .force("center", d3.forceCenter(width / 2, height / 2))
         .force("collide", d3.forceCollide((d) => {
-            /**
-             * Set force based on group
-             */
             var force = 5;
-            // switch (d.group) {
-            //     case "1":
-            //         force = 5;
-            //         break;
-            //     case "2":
-            //         force = 15;
-            //         break;
-            //     case "3":
-            //         force = 20;
-            //         break;
-            //     case "4":
-            //         force = 30;
-            //         break;
-            //     case "5":
-            //         force = 25;
-            //         break;
-            //     default:
-            //         force = 5;
-            //         break;
-            // }
             return force;
         }));
 
@@ -397,20 +355,25 @@ function animate(id) {
             .attr("y2", function (d) {
                 return d.target.y;
             });
-
         node
             .attr("cx", function (d) {
-                return d.x;
+                // console.log("d.x " + d.x);
+                // return d.x;
+                return d.x = Math.max(1, Math.min(width - 75, d.x));
             })
             .attr("cy", function (d) {
-                return d.y;
+                // console.log("d.y " + d.y);
+                // return d.y;
+                return d.y = Math.max(10, Math.min(height - 10, d.y));
             });
-        junk 
+        junk
             .attr("x", function (d) {
-                return d.x + 5;
+                // return d.x + 5;
+                return d.x = Math.max(5, Math.min(width - 75, d.x + 5));
             })
             .attr("y", function (d) {
-                return d.y;
+                // return d.y;
+                return d.y = Math.max(1, Math.min(height - 10, d.y));
             });
     }
 

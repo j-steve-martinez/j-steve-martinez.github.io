@@ -73,7 +73,6 @@
         /*
         Align sub-menu with parent right side
         */
-        width: max-content;
         left:auto;
         right:0;
         margin-right:-10px;
@@ -88,7 +87,10 @@
     }
     .page-link-dropdown:hover .page-link-content {
         display: block;
-    }    
+    }
+    #project-list {
+        width: 175px;
+    }   
     @include media-query($on-palm) {
         position: absolute;
         top: 9px;
@@ -191,7 +193,9 @@
         }
     }
 }
-
+/**
+ *    Posts
+ */
 .post-list {
     margin-left: 0;
     list-style: none;
@@ -209,7 +213,15 @@
     display: block;
     font-size: 24px;
 }
-
+/**
+ * Page
+*/
+.page-header {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
 .page-image {
     position: absolute;
     top: 3px;
