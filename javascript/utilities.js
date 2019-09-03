@@ -283,7 +283,12 @@ function animate(id) {
         .attr("height", height);
 
     var svg = d3.select("#date-svg");
-    var color = d3.scaleOrdinal(d3.schemeCategory20);
+    /**
+     * scheme was removed from d3
+     * changed to category10
+     */
+    // var color = d3.scaleOrdinal(d3.schemeCategory20);
+    var color = d3.scaleOrdinal(d3.schemeCategory10);
     var simulation = d3.forceSimulation()
         .force("link", d3.forceLink().id(function (d) {
             return d.id;
