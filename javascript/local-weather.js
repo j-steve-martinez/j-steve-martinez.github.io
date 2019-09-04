@@ -68,55 +68,76 @@ function degToCompass(num) {
 
 function geoSuccess(pos) {
     var crd = pos.coords;
-    console.log(crd);
-    console.log('Your current position is:');
-    console.log(`Latitude : ${crd.latitude}`);
-    console.log(`Longitude: ${crd.longitude}`);
-    console.log(`Accuracy More or less ${crd.accuracy} meters.`);
+    // console.log(crd);
+    // console.log('Your current position is:');
+    // console.log(`Latitude : ${crd.latitude}`);
+    // console.log(`Longitude: ${crd.longitude}`);
+    // console.log(`Accuracy More or less ${crd.accuracy} meters.`);
 
     /**
-     * Start Yahoo Query
+     * Start openWeatherMap Query
+     * A special point and API key are used to display samples:
+https://samples.openweathermap.org/data/2.5/weather?q=London,uk&appid=b6907d289e10d714a6e88b30761fae22 
+da6341d9ede527e10d0c18350384ce9c
      */
-    var yahooQuery = 'select * from weather.forecast where woeid in (SELECT woeid FROM geo.places WHERE text="(' + crd.latitude + ',' + crd.longitude + ')")'
-    var now = new Date();
-    var weatherUrl = 'https://query.yahooapis.com/v1/public/yql?format=json&q=';
-    // console.log(weatherUrl + yahooQuery);
-    $.getJSON(weatherUrl + yahooQuery, function (results) {
-        console.log('yahoo mfers');
-        var data = results.query.results.channel;
+    var lat = crd.latitude;
+    var lon = crd.longitude;
+    var digimon = 'da6341d9ede527e10d0c18350384ce9c';
+    var openWeatherMap = 'https://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&' + 'lon=' + lon + '&' + 'units=imperial' + '&' + 'appid=' + digimon;
+
+    // console.log(openWeatherMap);
+    
+    // var mockResults = {
+    //     "coord":{"lon":-122.34,"lat":37.58},
+    //     "weather":[{"id":804,"main":"Clouds","description":"overcast clouds","icon":"04d"}],
+    //     "base":"stations",
+    //     "main":{"temp":295.18,"pressure":1017,"humidity":88,"temp_min":289.82,"temp_max":299.26},
+    //     "visibility":16093,
+    //     "wind":{"speed":4.1,"deg":330,"gust":7.7},
+    //     "clouds":{"all":90},
+    //     "dt":1567542027,
+    //     "sys":{"type":1,"id":4322,"message":0.0144,"country":"US","sunrise":1567518081,"sunset":1567564594},
+    //     "timezone":-25200,
+    //     "id":5392423,
+    //     "name":"San Mateo",
+    //     "cod":200
+    // };
+    // console.log(mockResults);
+    // iconSample = 'http://openweathermap.org/img/wn/10d@2x.png';
+    iconBase = 'http://openweathermap.org/img/wn/';
+    // var now = new Date();
+    $.getJSON(openWeatherMap, (results)=>{
+        // console.log(results);
+        // var data = mockResults;
+        var data = results;
         var weather = {};
 
-        weather.city = data.location.city;
-        weather.country = data.location.country;
+        weather.city = data.name;
+        weather.country = data.sys.country;
 
-        weather.currently = data.item.condition.text;
-        weather.visibility = data.atmosphere.visibility;
+        weather.currently = data.weather[0].description;
+        weather.visibility =  Number.parseFloat(data.visibility / 1609.344).toFixed(2); //data.visibility / 1609.344;
         
-        weather.temp = data.item.condition.temp;
-        weather.direction = data.wind.direction;
+        weather.temp = data.main.temp;
+        weather.direction = data.wind.deg;
         
-        weather.high = data.item.forecast[0].high;
+        weather.high = data.main.temp_max;
         weather.speed = data.wind.speed;
         
-        weather.low = data.item.forecast[0].low;
-        weather.chill = data.wind.chill;
+        weather.low = data.main.temp_min;
         
-        weather.sunrise = data.astronomy.sunrise;
-        weather.pressure = data.atmosphere.pressure;
-        
-        weather.sunset = data.astronomy.sunset;        
-        weather.humidity = data.atmosphere.humidity;
+        weather.sunrise = new Date(data.sys.sunrise * 1000).toLocaleTimeString();
+        weather.pressure = data.main.pressure;
 
-        if (data.item.condition.code == '3200') {
-            weather.thumbnail = undefined;
-            weather.image = undefined;
-        } else {
-            weather.thumbnail = 'https://s.yimg.com/zz/combo?a/i/us/nws/weather/gr/' + data.item.condition.code + 'ds.png';
-            weather.image = 'https://s.yimg.com/zz/combo?a/i/us/nws/weather/gr/' + data.item.condition.code + 'd.png';
-        }
+        weather.sunset =  new Date(data.sys.sunset * 1000).toLocaleTimeString();        
+        weather.humidity = data.main.humidity;
+
+        weather.thumbnail = iconBase + data.weather[0].icon + '@2x.png'
+
         var peanutButter = {};
         peanutButter = JSON.stringify(weather)
         setCookie("weather", peanutButter, 15, "max-age");
+
         setLWScreen(weather);
     });
     // end ajax
@@ -132,6 +153,7 @@ function geoError(err) {
 }
 
 function setLWScreen(weather) {
+    // console.log(weather)
     /**
      * define some symbols for display
      */
@@ -153,7 +175,7 @@ function setLWScreen(weather) {
     /**
      * Add images 
      */
-    nWrap.style.backgroundImage = 'url(' + image + ')';;
+    // nWrap.style.backgroundImage = 'url(' + image + ')';;
 
     var nBtnConvert = document.createElement('button');
     nBtnConvert.innerText = "Convert";
@@ -171,7 +193,7 @@ function setLWScreen(weather) {
          */
         switch (item[0]) {
             case 'image':
-            case 'thumbnail':
+            // case 'thumbnail':
                 break
             default:
                 /**
@@ -214,7 +236,7 @@ function setLWScreen(weather) {
                         nName.innerText = "Wind"
                         break;
                     case 'visibility':
-                        nVal.innerText += "/mi";
+                        nVal.innerText += "/miles";
                         break;
                     case 'speed':
                         nVal.innerText += "/mph";
@@ -225,9 +247,13 @@ function setLWScreen(weather) {
                     case 'humidity':
                         nVal.innerText += percent;
                         break
-                        case 'currently':
+                    case 'currently':
                         nName.innerText = "Condition";
                         break
+                    case 'thumbnail':
+                        nName.innerText = "";
+                        nVal.innerHTML = '<image src=' +  nVal.innerText + '>';
+                        break;
                     default:
                         break;
                 }
@@ -256,6 +282,7 @@ window.onload = () => {
          * available
          */
         var weather = getCookie("weather");
+        // console.log(weather)
         if (weather) {
             // console.log('cookie data');
             setLWScreen(JSON.parse(weather));
